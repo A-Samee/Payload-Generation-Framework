@@ -1,0 +1,50 @@
+[
+  {
+    "pattern": "INPUT_VALUE & example_command",
+    "os_type": "windows",
+    "separator": "&",
+    "description": "Windows ampersand \u2014 runs second command unconditionally (cmd.exe)",
+    "why_filter_fails": "Ampersand is common in URL query strings (?a=1&b=2). Developers often allow it, creating a blind spot for command chaining.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE && example_command",
+    "os_type": "windows",
+    "separator": "&&",
+    "description": "Windows AND \u2014 second command runs only if first succeeds",
+    "why_filter_fails": "Same as Linux: '&' filtered but '&&' missed, or URL-encoded form %26%26 bypasses string-level checks.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE || example_command",
+    "os_type": "windows",
+    "separator": "||",
+    "description": "Windows OR \u2014 second command runs only if first fails",
+    "why_filter_fails": "Identical double-pipe bypass logic as Linux. Useful when original command errors (e.g., invalid path).",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE | example_command",
+    "os_type": "windows",
+    "separator": "|",
+    "description": "Windows pipe \u2014 stdout of first becomes stdin of second",
+    "why_filter_fails": "Pipe commonly whitelisted for legitimate use (e.g., dir | findstr). URL-encoded %7C may also pass through naive filters.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE%0D%0Aexample_command",
+    "os_type": "windows",
+    "separator": "%0D%0A",
+    "description": "CRLF encoded newline \u2014 cmd.exe treats CR+LF as command delimiter",
+    "why_filter_fails": "Filters applied before decoding miss CRLF. Useful when the shell processes URL-decoded strings.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE ^& example_command",
+    "os_type": "windows",
+    "separator": "^&",
+    "description": "Caret-escaped ampersand \u2014 cmd.exe caret is an escape character",
+    "why_filter_fails": "Filters blocking '&' may not account for '^&' which cmd.exe interprets as a literal '&' that then acts as command separator.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  }
+]

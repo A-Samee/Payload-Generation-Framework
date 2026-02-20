@@ -1,0 +1,23 @@
+# Command Injection Pattern Catalog — WINDOWS
+# Generated : 2026-02-20 18:30:04
+# Purpose   : Educational & authorized testing only
+# WARNING   : Patterns are NON-EXECUTABLE string templates
+
+# [WINDOWS] & — Windows ampersand — runs second command unconditionally (cmd.exe)
+INPUT_VALUE & example_command
+
+# [WINDOWS] && — Windows AND — second command runs only if first succeeds
+INPUT_VALUE && example_command
+
+# [WINDOWS] || — Windows OR — second command runs only if first fails
+INPUT_VALUE || example_command
+
+# [WINDOWS] | — Windows pipe — stdout of first becomes stdin of second
+INPUT_VALUE | example_command
+
+# [WINDOWS] %0D%0A — CRLF encoded newline — cmd.exe treats CR+LF as command delimiter
+INPUT_VALUE%0D%0Aexample_command
+
+# [WINDOWS] ^& — Caret-escaped ampersand — cmd.exe caret is an escape character
+INPUT_VALUE ^& example_command
+

