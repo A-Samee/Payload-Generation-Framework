@@ -1,0 +1,41 @@
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── IDE / OS ──────────────────────────────────────────────────────────────────
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ── Environment variables ─────────────────────────────────────────────────────
+.env
+.env.*
+
+# ── Tool-generated outputs (keep directory structure, ignore generated files) ─
+payloads/output/xss/*.json
+payloads/output/xss/*.txt
+payloads/output/sqli/*.json
+payloads/output/sqli/*.txt
+payloads/output/cmdi/*.json
+payloads/output/cmdi/*.txt
+
+# ── Backup files ──────────────────────────────────────────────────────────────
+*.backup
+*.bak
+*.orig
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
+*.log
