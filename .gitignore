@@ -24,14 +24,6 @@ ENV/
 .env
 .env.*
 
-# ── Tool-generated outputs (keep directory structure, ignore generated files) ─
-payloads/output/xss/*.json
-payloads/output/xss/*.txt
-payloads/output/sqli/*.json
-payloads/output/sqli/*.txt
-payloads/output/cmdi/*.json
-payloads/output/cmdi/*.txt
-
 # ── Backup files ──────────────────────────────────────────────────────────────
 *.backup
 *.bak
