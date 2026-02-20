@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Command Injection (CMDi) Payload Generator - Educational Framework
-Author: Soban Ahmed
+Author: Offensive Team Zeta
 Organization: ITSOLERA (PVT) LTD
 Purpose: Educational payload generation for authorized testing only
 

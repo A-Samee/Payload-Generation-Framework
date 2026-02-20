@@ -2,7 +2,7 @@
 """
 XSS Module - Payload Generation
 Generates educational XSS payload templates for learning purposes
-Author: Soban Ahmed
+Author: Offensive Team Zeta
 Organization: ITSOLERA (PVT) LTD
 """
 
@@ -629,7 +629,7 @@ class XSSGenerator:
         output_data = {
             'generated_at': datetime.now().isoformat(),
             'tool': 'XSS Payload Generator',
-            'author': 'Soban Ahmed - ITSOLERA',
+            'author': 'Offensive Team Zeta - ITSOLERA',
             'version': '2.0',
             'warning': 'FOR EDUCATIONAL AND AUTHORIZED TESTING ONLY',
             'payload_count': len(payloads),
@@ -647,7 +647,7 @@ class XSSGenerator:
             f.write("="*80 + "\n")
             f.write("XSS PAYLOAD CATALOG - EDUCATIONAL USE ONLY\n")
             f.write(f"Generated : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-            f.write("Author    : Soban Ahmed - ITSOLERA (PVT) LTD\n")
+            f.write("Author    : Offensive Team Zeta - ITSOLERA (PVT) LTD\n")
             f.write("WARNING   : Use only on authorized systems with permission\n")
             f.write("="*80 + "\n\n")
             
@@ -700,7 +700,7 @@ class XSSGenerator:
             f.write("# " + "="*76 + "\n")
             f.write("# BURP SUITE INTRUDER PAYLOAD LIST\n")
             f.write("# Tool    : XSS Payload Generator\n")
-            f.write(f"# Author  : Soban Ahmed - ITSOLERA (PVT) LTD\n")
+            f.write(f"# Author  : Offensive Team Zeta - ITSOLERA (PVT) LTD\n")
             f.write(f"# Created : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write("# Usage   : Burp Suite > Intruder > Payloads > Load > (this file)\n")
             f.write("# WARNING : Use ONLY on authorized targets with written permission\n")
@@ -762,7 +762,7 @@ class XSSGenerator:
             f.write("# " + "="*76 + "\n")
             f.write("# OWASP ZAP FUZZER PAYLOAD LIST\n")
             f.write("# Tool    : XSS Payload Generator\n")
-            f.write(f"# Author  : Soban Ahmed - ITSOLERA (PVT) LTD\n")
+            f.write(f"# Author  : Offensive Team Zeta - ITSOLERA (PVT) LTD\n")
             f.write(f"# Created : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write("# Usage   : ZAP > Fuzzer > Payloads > Add > File > (this file)\n")
             f.write("# Mode    : Offline testing on authorized lab (e.g. DVWA) only\n")
