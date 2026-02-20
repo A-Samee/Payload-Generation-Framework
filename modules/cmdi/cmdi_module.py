@@ -228,18 +228,18 @@ class CMDIGenerator:
         for i, p in enumerate(patterns, 1):
             if p.os_type != current_os:
                 current_os = p.os_type
-                print(f"\n{'='*70}")
-                print(f"  {p.os_type.upper()} PATTERNS")
-                print(f"{'='*70}")
+                label = f"{p.os_type.upper()} INJECTION PATTERNS"
+                print("\n" + "=" * 80)
+                print(f"{label:^80}")
+                print("=" * 80 + "\n")
 
-            print(f"\n  [{i}] Separator: {p.separator!r}  —  OS: {p.os_type.upper()}")
-            print(f"  {'─'*60}")
-            print(f"  Pattern     : {p.pattern}")
-            print(f"  Description : {p.description}")
-            print(f"  {p.note}")
+            print(f"[{i}] OS: {p.os_type.upper()} | Separator: {p.separator!r}")
+            print(f"Description : {p.description}")
+            print(f"Pattern     : {p.pattern}")
+            print(f"Note        : {p.note}")
             if include_explanation:
-                print(f"\n  Why filters fail:\n    {p.why_filter_fails}")
-            print(f"  {'─'*60}")
+                print(f"Filter Bypass: {p.why_filter_fails}")
+            print("-" * 80)
         return len(patterns)
 
     def export_txt(self, patterns: List[CMDIPattern], os_label: str, output_dir: str = "cmdi_output"):

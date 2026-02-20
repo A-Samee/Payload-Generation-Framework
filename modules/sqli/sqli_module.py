@@ -846,19 +846,18 @@ class SQLiPayloadGenerator:
         for ptype, plist in payloads_dict.items():
             if not plist:
                 continue
-            print(f"\n{'='*70}")
-            print(f"  {ptype.upper().replace('_', ' ')} PAYLOADS")
-            print(f"{'='*70}")
+            label = ptype.upper().replace('_', ' ')
+            print("\n" + "=" * 80)
+            print(f"{label + ' PAYLOADS':^80}")
+            print("=" * 80 + "\n")
             for p in plist:
                 total += 1
-                print(f"\n  [{total}] {p.payload_type.value.upper()} — {p.db_type.value}")
-                print(f"  {'─'*60}")
-                print(f"  Payload     : {p.payload}")
-                print(f"  Description : {p.description}")
-                print(f"  Difficulty  : {p.detection_difficulty}")
+                print(f"[{total}] Type: {p.payload_type.value.upper()} | DB: {p.db_type.value.upper()} | Difficulty: {p.detection_difficulty}")
+                print(f"Description : {p.description}")
+                print(f"Payload     : {p.payload}")
                 if include_explanation:
-                    print(f"\n  Method:\n{p.exploitation_method}")
-                print(f"  {'─'*60}")
+                    print(f"Method      : {p.exploitation_method}")
+                print("-" * 80)
         return total
 
     def export_txt(self, payloads_dict: Dict, db_label: str, output_dir: str = "sqli_output"):

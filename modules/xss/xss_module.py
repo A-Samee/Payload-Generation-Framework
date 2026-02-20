@@ -575,33 +575,33 @@ class XSSGenerator:
     
     def display_cli(self, payloads):
         """Display payloads in CLI format"""
-        print("\n" + "="*80)
-        print(" "*25 + "XSS PAYLOAD TEMPLATES")
-        print("="*80 + "\n")
+        print("\n" + "=" * 80)
+        print(f"{'XSS PAYLOAD TEMPLATES':^80}")
+        print("=" * 80 + "\n")
         
         regular_payloads = [p for p in payloads if p.get('type') != 'bypass_technique']
         bypass_payloads  = [p for p in payloads if p.get('type') == 'bypass_technique']
         
         for idx, p in enumerate(regular_payloads, 1):
             print(f"[{idx}] Type: {p['type'].upper()} | Context: {p['context'].upper()} | Severity: {p['severity']}")
-            print(f"Description: {p['description']}")
-            print(f"Payload: {p['encoded']}")
+            print(f"Description : {p['description']}")
+            print(f"Payload     : {p['encoded']}")
             if p.get('encoding_used') and p['encoding_used'] != 'none':
-                print(f"Encoding: {p['encoding_used'].upper()}")
+                print(f"Encoding    : {p['encoding_used'].upper()}")
             print("-" * 80)
         
         if bypass_payloads:
-            print("\n" + "="*80)
-            print(" "*20 + "WAF BYPASS TECHNIQUES (EDUCATIONAL)")
-            print("="*80 + "\n")
+            print("\n" + "=" * 80)
+            print(f"{'WAF BYPASS TECHNIQUES (EDUCATIONAL)':^80}")
+            print("=" * 80 + "\n")
             
             for idx, bp in enumerate(bypass_payloads, 1):
                 print(f"[B{idx}] Technique: {bp['technique'].replace('_', ' ').title()}")
-                print(f"Original:      {bp['original']}")
-                print(f"Bypassed:      {bp['bypassed']}")
-                print(f"Why it works:  {bp['explanation']}")
-                print(f"WAF weakness:  {bp['waf_reason']}")
-                print(f"Defense:       {bp['defense']}")
+                print(f"Original    : {bp['original']}")
+                print(f"Bypassed    : {bp['bypassed']}")
+                print(f"Why it works: {bp['explanation']}")
+                print(f"WAF weakness: {bp['waf_reason']}")
+                print(f"Defense     : {bp['defense']}")
                 print("-" * 80)
     
     def display_defensive_notes(self):
