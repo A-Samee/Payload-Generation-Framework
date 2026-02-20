@@ -257,24 +257,79 @@ class CMDIGenerator:
         print(f"  ✅ TXT exported  → {path}")
 
     def export_burp(self, patterns: List[CMDIPattern], os_label: str, output_dir: str = "cmdi_output"):
-        """Export patterns in Burp Suite Intruder format (one per line)"""
+        """Export patterns in Burp Suite Intruder format"""
         os.makedirs(output_dir, exist_ok=True)
         path = os.path.join(output_dir, f"cmdi_{os_label.lower()}_burp.txt")
         with open(path, 'w') as f:
+            f.write("# " + "="*76 + "\n")
+            f.write("# BURP SUITE INTRUDER PAYLOAD LIST\n")
+            f.write("# Tool    : Command Injection Pattern Generator\n")
+            f.write("# Author  : Offensive Team Zeta - ITSOLERA (PVT) LTD\n")
+            f.write(f"# Created : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write(f"# Target  : {os_label.upper()} OS patterns\n")
+            f.write("# Usage   : Burp Suite > Intruder > Payloads > Load > (this file)\n")
+            f.write("# WARNING : Use ONLY on authorized targets with written permission\n")
+            f.write("# NOTE    : These are NON-EXECUTABLE string templates only\n")
+            f.write("# " + "="*76 + "\n\n")
+
+            f.write("# HOW TO USE:\n")
+            f.write("#   1. Open Burp Suite → Proxy → Intercept a request\n")
+            f.write("#   2. Right-click → Send to Intruder\n")
+            f.write("#   3. Intruder → Positions → mark your injection point (Add §)\n")
+            f.write("#   4. Intruder → Payloads → Payload type: Simple list\n")
+            f.write("#   5. Click Load → select this file\n")
+            f.write("#   6. Click Start Attack (authorized lab / DVWA ONLY)\n\n")
+
+            current_os = None
             for p in patterns:
+                if p.os_type != current_os:
+                    current_os = p.os_type
+                    f.write("# " + "="*76 + "\n")
+                    f.write(f"# {p.os_type.upper()} INJECTION PATTERNS\n")
+                    f.write("# " + "="*76 + "\n")
+                f.write(f"# [Separator: {p.separator}] {p.description}\n")
                 f.write(f"{p.pattern}\n")
-        print(f"  ✅ Burp export   → {path}")
+            f.write("\n")
+        print(f"  ✅ Burp exported → {path}")
+        print("     Import: Burp > Intruder > Payloads > Load")
 
     def export_zap(self, patterns: List[CMDIPattern], os_label: str, output_dir: str = "cmdi_output"):
         """Export patterns in OWASP ZAP Fuzzer format"""
         os.makedirs(output_dir, exist_ok=True)
         path = os.path.join(output_dir, f"cmdi_{os_label.lower()}_zap.txt")
         with open(path, 'w') as f:
-            f.write("# OWASP ZAP Fuzzer Payload List\n")
-            f.write(f"# Command Injection — {os_label.upper()}\n\n")
+            f.write("# " + "="*76 + "\n")
+            f.write("# OWASP ZAP FUZZER PAYLOAD LIST\n")
+            f.write("# Tool    : Command Injection Pattern Generator\n")
+            f.write("# Author  : Offensive Team Zeta - ITSOLERA (PVT) LTD\n")
+            f.write(f"# Created : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write(f"# Target  : {os_label.upper()} OS patterns\n")
+            f.write("# Usage   : ZAP > Fuzzer > Payloads > Add > File > (this file)\n")
+            f.write("# Mode    : Offline testing on authorized lab (e.g. DVWA) only\n")
+            f.write("# WARNING : Use ONLY on authorized targets with written permission\n")
+            f.write("# NOTE    : These are NON-EXECUTABLE string templates only\n")
+            f.write("# " + "="*76 + "\n\n")
+
+            f.write("# HOW TO USE IN OWASP ZAP:\n")
+            f.write("#   1. Start ZAP → Manual Explore → browse to localhost/DVWA\n")
+            f.write("#   2. Find the target request in the History tab\n")
+            f.write("#   3. Right-click the request → Attack → Fuzz\n")
+            f.write("#   4. In the Fuzz dialog, highlight the injection point\n")
+            f.write("#   5. Payloads → Add → Type: File → select this file\n")
+            f.write("#   6. Click Start Fuzzer (authorized lab / DVWA ONLY)\n\n")
+
+            current_os = None
             for p in patterns:
+                if p.os_type != current_os:
+                    current_os = p.os_type
+                    f.write("# " + "="*76 + "\n")
+                    f.write(f"# {p.os_type.upper()} INJECTION PATTERNS\n")
+                    f.write("# " + "="*76 + "\n")
+                f.write(f"# [Separator: {p.separator}] {p.description}\n")
                 f.write(f"{p.pattern}\n")
-        print(f"  ✅ ZAP export    → {path}")
+            f.write("\n")
+        print(f"  ✅ ZAP exported  → {path}")
+        print("     Import: ZAP > Fuzzer > Payloads > Add > File")
 
     def export_json_full(self, patterns: List[CMDIPattern], os_label: str, output_dir: str = "cmdi_output"):
         """Export full pattern data to JSON"""
